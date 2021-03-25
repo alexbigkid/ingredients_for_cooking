@@ -18,16 +18,6 @@ DateAndTimeInfo ()
     echo -e "EPOCH_DATE_TIME   \t: $EPOCH_DATE_TIME"
 }
 
-BuildInfo ()
-{
-    echo
-    echo -e "${GREEN}----------------------------------------------------------------------${NC}"
-    echo -e "${GREEN}| ${FUNCNAME[0]}${NC}"
-    echo -e "${GREEN}----------------------------------------------------------------------${NC}"
-    echo -e "Build.BuildId     \t: $BUILD_ID"
-    echo -e "Build.BuildNumber \t: $BUILD_NUMBER"
-}
-
 NumberOfProcessingCores ()
 {
     local LCL_NUMBER_OF_CORES=
@@ -113,22 +103,17 @@ PythonInfo ()
     echo -e "${GREEN}| ${FUNCNAME[0]}${NC}"
     echo -e "${GREEN}----------------------------------------------------------------------${NC}"
     echo -e "\n------------------------\nPYTHON INSTALLATION LOCATIONS\n------------------------"
-    which -a python python2 python3
+    which -a python python3
     echo -e "\n------------------------\nPYTHON VERSIONS AND lIBS\n------------------------"
     python --version
-    echo -e "\n------------------------\nPYTHON2 VERSIONS AND lIBS\n------------------------"
-    python2 --version
-    python2 -c 'import sys; print(sys.path)'
     echo -e "\n------------------------\nPYTHON3 VERSIONS AND lIBS\n------------------------"
     python3 --version
     python3 -c 'import sys; print(sys.path)'
     echo
     echo -e "\n------------------------\nPIP INSTALLATIONS\n------------------------"
-    which pip pip2 pip3
+    which pip pip3
     echo -e "\n------------------------\nPIP VERSION\n------------------------"
     pip -V
-    echo -e "\n------------------------\nPIP2 VERSION\n------------------------"
-    pip2 -V
     echo -e "\n------------------------\nPIP3 VERSION\n------------------------"
     pip3 -V
 }
@@ -181,7 +166,6 @@ echo
 echo "-> $0 ($@)"
 
 DateAndTimeInfo
-# BuildInfo # Build info on Github works differently as on Azure DevOps
 NumberOfProcessingCores
 AgentHwInfo
 CurrentDirectoryInfo

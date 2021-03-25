@@ -23,7 +23,7 @@ jobs:
               uses: actions/checkout@master
 
             - name: Agent Info
-              run: ./AgentInfo.sh
+              run: ./.github/scripts/AgentInfo.sh
             # - name: Install Tools
             #   run: ./InstallTools.sh
             - name: Run unit tests
