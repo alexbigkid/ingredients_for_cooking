@@ -3,7 +3,7 @@ class BasicFunction(object):
         self.state = 0
 
     def increment_state(self):
-        self.state += 1
+        self.state += 2
 
     def clear_state(self):
         self.state = 0
