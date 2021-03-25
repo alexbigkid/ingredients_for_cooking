@@ -1,17 +1,3 @@
-#===============================================================================
-# Check whether it is windows or Unix like system
-# Check whether python3 is version 3, or python is version 3
-#===============================================================================
-ifeq ($(OS),Windows_NT)
-	# if Windows like
-    PIP_EXE := pip_windows
-else
-	# if unix like
-    UNAME := $(shell uname)
-    PIP_EXE := pip_unix_like
-endif
-
-
 .PHONY:	upgrade_setuptools init init_dev test test_verbose my_dish settings help
 .SILENT: my_dish
 
