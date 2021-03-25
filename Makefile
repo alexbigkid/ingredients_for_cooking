@@ -1,22 +1,37 @@
-.PHONY:	init init_dev init init3 test settings help
+#===============================================================================
+# Check whether it is windows or Unix like system
+# Check whether python3 is version 3, or python is version 3
+#===============================================================================
+ifeq ($(OS),Windows_NT)
+	# if Windows like
+    PIP_EXE := pip_windows
+else
+	# if unix like
+    UNAME := $(shell uname)
+    PIP_EXE := pip_unix_like
+endif
 
-init:
+
+.PHONY:	upgrade_setuptools init init_dev test test_verbose my_dish settings help
+.SILENT: my_dish
+
+upgrade_setuptools:
 	pip install --upgrade setuptools
-	pip install --user -r requirements.txt
 
-init_dev:	init
-	pip install --user -r requirements_dev.txt
+init: upgrade_setuptools
+	pip install --user --requirement requirements.txt
 
-init3:
-	pip3 install --upgrade setuptools
-	pip3 install --user -r requirements.txt
-
-init_dev3:	init3
-	pip3 install --user -r requirements_dev.txt
+init_dev: upgrade_setuptools
+	pip install --user --requirement requirements_dev.txt
 
 test:
-	python -m unittest discover -s tests
-# py.test tests
+	python -m unittest discover --start-directory tests
+
+test_verbose:
+	python -m unittest discover --start-directory tests --verbose
+
+my_dish:
+	python ./src/shop_for_ingredients.py
 
 settings:
 	@echo "HOME             =" ${HOME}
@@ -24,10 +39,17 @@ settings:
 
 help:
 	@echo "Targets:"
-	@echo "  init           - pip install required packages"
-	@echo "  init_dev       - pip installs required development packages"
-	@echo "  init           - pip3 installs required packages using pip"
-	@echo "  init_dev       - pip3 installs required development packages"
-	@echo "  test           - runs test"
-	@echo "  settings       - outputs current settings"
-	@echo "  help           - outputs this info"
+	@echo "-----------------------------------------------------------------------------"
+	@echo "  my_dish                     - executes the main program"
+	@echo "-----------------------------------------------------------------------------"
+	@echo "  init                        - pip install required packages"
+	@echo "  init_dev                    - pip installs required development packages"
+	@echo "-----------------------------------------------------------------------------"
+	@echo "  init3                       - pip3 installs required packages using pip"
+	@echo "  init_dev3                   - pip3 installs required development packages"
+	@echo "-----------------------------------------------------------------------------"
+	@echo "  test                        - runs test"
+	@echo "  test_verbose                - runs test with verbose messaging"
+	@echo "-----------------------------------------------------------------------------"
+	@echo "  settings                    - outputs current settings"
+	@echo "  help                        - outputs this info"
