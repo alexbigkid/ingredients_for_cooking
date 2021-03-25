@@ -1,0 +1,30 @@
+name: IngredientsForCooking
+
+on:
+    push:
+        branches:
+            - main
+
+env:
+    ENV: prod
+    SPOONACULAR_API_KEY: ${{ secrets.SPOONACULAR_API_KEY }}
+
+jobs:
+    Deploy:
+        name: Ran on ${{ matrix.os }}
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                os: [ubuntu-latest]
+                # os: [ ubuntu-latest, macOS-latest ]
+
+        steps:
+            - name: checking out the git repo
+              uses: actions/checkout@master
+
+            - name: Agent Info
+              run: ./AgentInfo.sh
+            # - name: Install Tools
+            #   run: ./InstallTools.sh
+            - name: Run unit tests
+              run: make test
