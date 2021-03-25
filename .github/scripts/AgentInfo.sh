@@ -1,13 +1,14 @@
 #!/bin/bash
 
-COMMON_LIB_FILE="./CommonLib.sh"
+CURRENT_DIR=$(dirname "${BASH_SOURCE[0]}")
+echo "CURRENT_DIR = $CURRENT_DIR"
+COMMON_LIB_FILE="./$CURRENT_DIR/CommonLib.sh"
 [ -f $COMMON_LIB_FILE ] && source $COMMON_LIB_FILE
 
 #---------------------------
 # functions
 #---------------------------
-DateAndTimeInfo ()
-{
+DateAndTimeInfo() {
     echo
     echo -e "${GREEN}----------------------------------------------------------------------${NC}"
     echo -e "${GREEN}| ${FUNCNAME[0]}${NC}"
@@ -18,8 +19,7 @@ DateAndTimeInfo ()
     echo -e "EPOCH_DATE_TIME   \t: $EPOCH_DATE_TIME"
 }
 
-NumberOfProcessingCores ()
-{
+NumberOfProcessingCores() {
     local LCL_NUMBER_OF_CORES=
     local LCL_UNAME="$(uname -s)"
     [ "$LCL_UNAME" == "Darwin" ] && LCL_UNAME="Mac OSX" && LCL_NUMBER_OF_CORES=$(sysctl -n hw.ncpu) || LCL_NUMBER_OF_CORES=$(nproc --all)
@@ -31,35 +31,33 @@ NumberOfProcessingCores ()
     echo "Number of Processing Cores :  $LCL_NUMBER_OF_CORES"
 }
 
-AgentHwInfo ()
-{
+AgentHwInfo() {
     local LCL_INFO_KEY=(
-                            MACHINE_NODE_NAME
-                            MACHINE_HW_NAME
-                            CPU_ARCHITECTURE
-                            OS_SYSTEM_RELEASE
-                            OS_SYSTEM_NAME
-                            OS_SYSTEM_VERSION
-                        )
+        MACHINE_NODE_NAME
+        MACHINE_HW_NAME
+        CPU_ARCHITECTURE
+        OS_SYSTEM_RELEASE
+        OS_SYSTEM_NAME
+        OS_SYSTEM_VERSION
+    )
     local LCL_INFO_VALUE=(
-                            $(uname -n)
-                            $(uname -m)
-                            $(uname -p)
-                            $(uname -r)
-                            $(uname -s)
-                            $(uname -v)
-                         )
+        $(uname -n)
+        $(uname -m)
+        $(uname -p)
+        $(uname -r)
+        $(uname -s)
+        $(uname -v)
+    )
     echo
     echo -e "${GREEN}----------------------------------------------------------------------${NC}"
     echo -e "${GREEN}| ${FUNCNAME[0]}${NC}"
     echo -e "${GREEN}----------------------------------------------------------------------${NC}"
-    for (( i = 0; i < ${#LCL_INFO_KEY[@]}; i++)); do
+    for ((i = 0; i < ${#LCL_INFO_KEY[@]}; i++)); do
         echo -e "${LCL_INFO_KEY[$i]}  \t: ${LCL_INFO_VALUE[$i]}"
     done
 }
 
-CurrentDirectoryInfo ()
-{
+CurrentDirectoryInfo() {
     local LCL_PWD=$(pwd)
     local LCL_LIST_DIR=$(ls -la)
     echo
@@ -70,8 +68,7 @@ CurrentDirectoryInfo ()
     echo -e "LCL_LIST_DIR \t : $LCL_LIST_DIR"
 }
 
-PathInfo ()
-{
+PathInfo() {
     echo
     echo -e "${GREEN}----------------------------------------------------------------------${NC}"
     echo -e "${GREEN}| ${FUNCNAME[0]}${NC}"
@@ -79,8 +76,7 @@ PathInfo ()
     echo "${PATH//:/$'\n'}"
 }
 
-NodeInfo ()
-{
+NodeInfo() {
     echo
     echo -e "${GREEN}----------------------------------------------------------------------${NC}"
     echo -e "${GREEN}| ${FUNCNAME[0]}${NC}"
@@ -96,8 +92,7 @@ NodeInfo ()
 
 }
 
-PythonInfo ()
-{
+PythonInfo() {
     echo
     echo -e "${GREEN}----------------------------------------------------------------------${NC}"
     echo -e "${GREEN}| ${FUNCNAME[0]}${NC}"
@@ -118,8 +113,7 @@ PythonInfo ()
     pip3 -V
 }
 
-BrewInfo ()
-{
+BrewInfo() {
     echo
     echo -e "${GREEN}----------------------------------------------------------------------${NC}"
     echo -e "${GREEN}| ${FUNCNAME[0]}${NC}"
@@ -134,8 +128,7 @@ BrewInfo ()
     brew outdated
 }
 
-BashInfo ()
-{
+BashInfo() {
     echo
     echo -e "${GREEN}----------------------------------------------------------------------${NC}"
     echo -e "${GREEN}| ${FUNCNAME[0]}${NC}"
@@ -146,8 +139,7 @@ BashInfo ()
     bash --version
 }
 
-SysteVariablesSettings ()
-{
+SysteVariablesSettings() {
     echo
     echo -e "${GREEN}----------------------------------------------------------------------${NC}"
     echo -e "${GREEN}| ${FUNCNAME[0]}${NC}"
@@ -157,7 +149,6 @@ SysteVariablesSettings ()
     # # set
     declare -xp | cut -d" " -f3-
 }
-
 
 #---------------------------
 # main
