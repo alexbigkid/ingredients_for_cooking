@@ -2,7 +2,8 @@
 .SILENT: my_dish
 
 upgrade_setuptools:
-	pip install --upgrade setuptools
+	@echo "Not doing anything"
+	# pip install --upgrade setuptools
 
 init: upgrade_setuptools
 	pip install --user --requirement requirements.txt
