@@ -28,5 +28,5 @@ jobs:
             #   run: ./InstallTools.sh
             - name: Run unit tests
               run: |
-                make init_dev
-                make test_verbose
+                  make init_dev
+                  make test
