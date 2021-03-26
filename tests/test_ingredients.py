@@ -45,18 +45,18 @@ class TestIngredients(unittest.TestCase):
             self.assertEqual(actual_input, expected)
 
     @parameterized.expand([
-        ['', 'ERROR: Not valid input. Please use alpha-numeric characters.'],
-        [',', 'ERROR: Not valid input. Please use alpha-numeric characters.'],
-        [',,', 'ERROR: Not valid input. Please use alpha-numeric characters.'],
-        [' ,      , ,', 'ERROR: Not valid input. Please use alpha-numeric characters.'],
-        ['😀', 'ERROR: Not valid input. Please use alpha-numeric characters.'],
-        ['😎, 🥸', 'ERROR: Not valid input. Please use alpha-numeric characters.'],
+        [''],
+        [','],
+        [',,'],
+        [' ,  , ,'],
+        ['😀'],
+        ['😎, 🥸'],
     ])
-    def test_read_input_should_throw_exception_given_not_valid_input(self, input, expected_exception):
+    def test_read_input_should_throw_exception_given_not_valid_input(self, input):
         with patch('builtins.input', return_value=input):
-            with self.assertRaises(Exception):
+            with self.assertRaises(Exception) as exception_message:
                 self.ingredients.read_input()
-
+            self.assertEqual(str(exception_message.exception), self.ingredients.INVALID_INPUT_EXCEPTION_MESSAGE)
 
 if __name__ == '__main__':
     unittest.main()
