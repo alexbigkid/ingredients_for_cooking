@@ -13,7 +13,7 @@ def main():
     exit_code = 0
     try:
         ingredients_array = get_ingredients()
-        print(', '.join(ingredients_array))
+        print('You entered: ' + ', '.join(ingredients_array))
         # get recepies
         # print results
     except Exception as exception:
