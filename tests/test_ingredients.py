@@ -31,11 +31,11 @@ class TestIngredients(unittest.TestCase):
             self.assertEqual(actual_input, expected)
 
     @parameterized.expand([
-        [',eggs1,', ['eggs1']],
-        [',,eggs2', ['eggs2']],
-        ['eggs3,,', ['eggs3']],
-        [',,eggs4,,', ['eggs4']],
-        [' , , eggs5 , , ', ['eggs5']],
+        [',OneEgg,', ['OneEgg']],
+        [',,TwoEggs', ['TwoEggs']],
+        ['ThreeEggs,,', ['ThreeEggs']],
+        [',,FourEggs,,', ['FourEggs']],
+        [' , , FiveEggs , , ', ['FiveEggs']],
         ['Champignon,, banana', ['Champignon', 'banana']],
         [',, basil , , potatos,,', ['basil', 'potatos']],
     ])
@@ -49,6 +49,7 @@ class TestIngredients(unittest.TestCase):
         [','],
         [',,'],
         [' ,  , ,'],
+        ['42'],
         ['😀'],
         ['😎, 🥸'],
     ])
