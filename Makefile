@@ -18,7 +18,7 @@ test_verbose:
 	python -m unittest discover --start-directory tests --verbose
 
 my_dish:
-	python ./src/shop_for_ingredients.py
+	python ./src/main.py
 
 settings:
 	@echo "HOME             =" ${HOME}
