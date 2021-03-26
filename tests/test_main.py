@@ -1,7 +1,7 @@
 import unittest
 
 
-class TestIngredientsForCooking(unittest.TestCase):
+class TestMain(unittest.TestCase):
 
     def test_get_ingredients(self):
         self.assertTrue(True)
