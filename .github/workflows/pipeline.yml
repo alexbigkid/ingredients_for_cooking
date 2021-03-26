@@ -27,4 +27,4 @@ jobs:
             # - name: Install Tools
             #   run: ./InstallTools.sh
             - name: Run unit tests
-              run: make test
+              run: make test_verbose

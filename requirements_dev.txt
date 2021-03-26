@@ -2,8 +2,10 @@
 -r requirements.txt
 
 # Install test dependencies
-black               # code formatting
-flake8              # linting, formatting, analysis
+parameterized
+#mock
+#black               # code formatting
+#flake8              # linting, formatting, analysis
 #pytest              # pytest for unit testing
 #pytest-runner       # pytest runner
 #pytest-flake8       # pytest linting
