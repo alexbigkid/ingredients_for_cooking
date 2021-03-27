@@ -45,15 +45,15 @@ I experemented with different way writing unittests: using mocks, patches and DI
 Usually I'd write code with one style for better readability.
 
 ##### Test were ran on:
-[X] MacOS Big Sur (local machine) / Python 3.8.8
-[X] Linux Ubuntu 20.04 (pipeline machine) / Python 3.8.5
-[ ] Windows 10
+- [x] MacOS Big Sur (local machine) / Python 3.8.8
+- [x] Linux Ubuntu 20.04 (pipeline machine) / Python 3.8.5
+- [ ] Windows 10
 
 
 ##### program runs on:
-[X] MacOS Big Sur (local machine) / Python 3.8.8
-[X] Linux Ubuntu 20.04 (pipeline machine) / Python 3.8.5
-[ ] Windows 10
+- [x] MacOS Big Sur (local machine) / Python 3.8.8
+- [x] Linux Ubuntu 20.04 (pipeline machine) / Python 3.8.5
+- [ ] Windows 10
 
 
 ## API used
