@@ -59,7 +59,7 @@ class Recipes():
             env_loader.set_environment_varaibales_from_file(self.ENVIRONMENT_FILE_NAME)
             spoonacular_api_key = env_loader.get_environment_variable_value(self.SPOONACULAR_API_KEY)
             if not spoonacular_api_key:
-                raise Exception(self.INVALID_INPUT_EXCEPTION_MESSAGE)
+                raise Exception(self.API_KEY_NOT_FOUND_EXCEPTION_MESSAGE)
         return spoonacular_api_key
 
 
@@ -75,10 +75,6 @@ class Recipes():
 
     def __is_response_valid(self, response):
         return True
-
-
-    def __print_response(self, response):
-        pass
 
 
     def __print_json_list(self, json_list):
