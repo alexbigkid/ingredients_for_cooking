@@ -1,4 +1,4 @@
-# Ingredients for cooking :octocat:
+# :octocat: Ingredients for cooking :octocat:
 Creates a shopping list with your favorite ingredients for recipes you liked.
 
 ## APY KEY note
@@ -39,7 +39,7 @@ and add following line into the ***.env*** file:<br>
 | make coverage     | runs test, produces coverage and displays it |
 
 
-## Notes for reviewers
+## Notes for i:robot: reviewers
 Since I was not very familar with unittest frame work (I used pytest in the past)
 I experemented with different way writing unittests: using mocks, patches and DIs.
 Usually I'd write code with one style for better readability.
