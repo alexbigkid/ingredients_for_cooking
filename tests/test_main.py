@@ -10,6 +10,9 @@ import unittest
 
 class TestMain(unittest.TestCase):
 
+    # -------------------------------------------------------------------------
+    # Tests for get_ingredients
+    # -------------------------------------------------------------------------
     def test_get_ingredients(self):
         self.assertTrue(True)
 

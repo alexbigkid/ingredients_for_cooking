@@ -14,6 +14,9 @@ class TestRecipes(unittest.TestCase):
     def setUp(self):
         self.recipes = Recipes()
 
+    # -------------------------------------------------------------------------
+    # Tests for get_recipes
+    # -------------------------------------------------------------------------
     def test_get_recipes_should_display_no_recipes_found_given_empty_response(self):
         self.assertTrue(True)
 

@@ -15,6 +15,9 @@ class TestEnvLoader(unittest.TestCase):
     def setUp(self):
         self.env_loader = EnvLoader()
 
+    # -------------------------------------------------------------------------
+    # Tests for get_environment_variable_value_
+    # -------------------------------------------------------------------------
     @patch.dict(os.environ, {'ABK_TEST_ENV_VAR': '[fake_api_key]'})
     def test_get_environment_variable_value_returns_valid_value(self):
         actual_value = self.env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR')
@@ -29,8 +32,9 @@ class TestEnvLoader(unittest.TestCase):
         actual_value = self.env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR')
         self.assertEqual(actual_value, '')
 
-
-
+    # -------------------------------------------------------------------------
+    # Tests for set_environment_varaibales_from_file
+    # -------------------------------------------------------------------------
     def test_set_environment_varaibales_from_file(self):
         self.assertTrue(True)
 

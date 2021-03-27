@@ -17,6 +17,9 @@ class TestIngredients(unittest.TestCase):
     def setUp(self):
         self.ingredients = Ingredients()
 
+    # -------------------------------------------------------------------------
+    # Tests for ask_for_ingredients
+    # -------------------------------------------------------------------------
     def test_ask_for_ingredients_prompts_user_to_enter_ingredients(self):
         with patch('sys.stdout', new=StringIO()) as fakeOutput:
             self.ingredients.ask_for_ingredients()
@@ -24,6 +27,9 @@ class TestIngredients(unittest.TestCase):
             self.assertEqual(
                 actual_stdout, self.ingredients.USER_PROMPT_FOR_INGREDIENTS)
 
+    # -------------------------------------------------------------------------
+    # Tests for read_input
+    # -------------------------------------------------------------------------
     @parameterized.expand([
         ['eggs', ['eggs']],
         ['Champignon, green apple', ['Champignon', 'green apple']],
