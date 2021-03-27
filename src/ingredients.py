@@ -1,6 +1,6 @@
 class Ingredients():
     USER_PROMPT_FOR_INGREDIENTS = 'Please enter your favorite ingredients separated by comma:'
-    INVALID_INPUT_EXCEPTION_MESSAGE = 'ERROR: Ivalid input. Please use only letters and white spaces.'
+    INVALID_INPUT_EXCEPTION_MESSAGE = 'EXCEPTION: Ivalid input. Please use only letters and white spaces.'
 
     def ask_for_ingredients(self):
         print(self.USER_PROMPT_FOR_INGREDIENTS)
