@@ -46,6 +46,7 @@ class TestEnvLoader(unittest.TestCase):
             self.env_loader.set_environment_varaibales_from_file('does_not_matter')
             env_var_value = self.env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR')
             self.assertEqual(env_var_value, '[fake_api_key]')
+            mock_file.assert_called_with('does_not_matter', 'r')
 
 
     def test_set_environment_varaibales_from_file_sets_several_env_variables(self):
@@ -61,6 +62,7 @@ class TestEnvLoader(unittest.TestCase):
             self.assertEqual(env_var_value, '[que_chimba]')
             env_var_value = self.env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR2')
             self.assertEqual(env_var_value, '[no_dar_papaya]')
+            mock_file.assert_called_with('does_not_matter', 'r')
 
 
     # 1. test cases is missing / not handled if the mal formatted: 'VAR_NAME = VAR_VALUE' not handles spaces
@@ -72,6 +74,7 @@ class TestEnvLoader(unittest.TestCase):
     #         self.env_loader.set_environment_varaibales_from_file('does_not_matter')
     #         env_var_value = self.env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR')
     #         self.assertEqual(env_var_value, '[it_is_very_late]')
+            # mock_file.assert_called_with('does_not_matter', 'r')
 
 
     # 2. test cases is missing / not handled if the '=' is missing
@@ -83,6 +86,7 @@ class TestEnvLoader(unittest.TestCase):
     #         self.env_loader.set_environment_varaibales_from_file('does_not_matter')
     #         env_var_value = self.env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR')
     #         self.assertEqual(env_var_value, '')
+            # mock_file.assert_called_with('does_not_matter', 'r')
 
 
     # 3. test case - file does not exist
