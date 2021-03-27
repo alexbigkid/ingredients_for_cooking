@@ -1,4 +1,4 @@
-""" Unit tests for recipes.py """
+"""Unit tests for recipes.py"""
 
 # Standard library imports
 import unittest

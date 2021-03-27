@@ -1,4 +1,4 @@
-""" Main program for displaying ingredients list for shopping with the recipes liked """
+"""Main program for displaying ingredients list for shopping with the recipes liked"""
 
 # Standard library imports
 import sys

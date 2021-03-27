@@ -1,4 +1,4 @@
-""" Prompts user to enter ingredients, sanitizes user's input and validates it """
+"""Prompts user to enter ingredients, sanitizes user's input and validates it"""
 
 class Ingredients():
     USER_PROMPT_FOR_INGREDIENTS = 'Please enter your favorite ingredients separated by comma:'

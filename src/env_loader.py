@@ -1,4 +1,4 @@
-""" Loades environment variables from a file and reads the value of environment variable """
+"""Loades environment variables from a file and reads the value of environment variable"""
 
 # Standard library imports
 import os

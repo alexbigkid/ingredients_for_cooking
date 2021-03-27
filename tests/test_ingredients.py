@@ -1,4 +1,4 @@
-""" Unit tests for ingredients.py """
+"""Unit tests for ingredients.py"""
 
 # Standard library imports
 from io import StringIO

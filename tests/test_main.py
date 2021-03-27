@@ -1,4 +1,4 @@
-""" Unit tests for main.py """
+"""Unit tests for main.py"""
 
 # Standard library imports
 import unittest

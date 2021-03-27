@@ -1,4 +1,4 @@
-""" Sends request using spoonacular API and evaluates the response with recipes """
+"""Sends request using spoonacular API and evaluates the response with recipes"""
 
 # Standard library imports
 import requests
