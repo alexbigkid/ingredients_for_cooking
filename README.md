@@ -5,11 +5,11 @@ Creates a shopping list with your favorite ingredients for recipes you liked.
 To be able to execute this python program an API KEY for the Spoonacular
 http service is required. Since it is sensitive information and should
 not be added to the plain view of source code, you would need to set up
-an environment variable in you terminal with following command:
+an environment variable in you terminal with following command:<br>
 export SPOONACULAR_API_KEY=<spoonacular_api_key_here>
 
 Or alternatively you can create file .env in root directory of this project
-and add following line into the .env file:
+and add following line into the .env file:<br>
 SPOONACULAR_API_KEY=<spoonacular_api_key_here>
 
 
@@ -19,13 +19,15 @@ make my_dish - To start the program
 
 
 ## Instructions for developers
-make help         - to see all make rules<br>
-make my_dish      - executes the main program<br>
-make init         - installs required packages<br>
-make init_dev     - installs required development packages<br>
-make test         - runs test<br>
-make test_verbose - runs test with verbose messaging<br>
-make coverage     - runs test, produces coverage and displays it<br>
+| make rule         | description of the rule                       |
+| ----------------- | --------------------------------------------- |
+| make help         | to see all make rules                         |
+| make my_dish      | executes the main program                     |
+| make init         | installs required packages                    |
+| make init_dev     | installs required development packages        |
+| make test         | runs test                                     |
+| make test_verbose | runs test with verbose messaging              |
+| make coverage     | runs test, produces coverage and displays it  |
 
 
 ## Note for reviewers
