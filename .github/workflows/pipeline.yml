@@ -28,7 +28,7 @@ jobs:
             #   run: ./InstallTools.sh
             - name: Run unit tests
               run: |
-                make init_dev
-                make test
-                coverage --version
-
+                  make init_dev
+                  export PATH=/home/runner/.local/bin:$PATH
+                  make test
+                  coverage --version
