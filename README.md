@@ -14,14 +14,14 @@ SPOONACULAR_API_KEY=<spoonacular_api_key_here>
 
 
 ## Instructions for users
-| make rule    | description of the rule             |
+| make rule    | description                         |
 | ------------ | ----------------------------------- |
 | make install | installs needed python dependencies |
 | make my_dish | starts the program                  |
 
 
 ## Instructions for developers
-| make rule         | description of the rule                      |
+| make rule         | description                                  |
 | ----------------- | -------------------------------------------- |
 | make help         | to see all make rules                        |
 | make my_dish      | executes the main program                    |
