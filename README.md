@@ -14,10 +14,10 @@ SPOONACULAR_API_KEY=<spoonacular_api_key_here>
 
 
 ## Instructions for users
+| make rule         | description of the rule                       |
 | ----------------- | --------------------------------------------- |
-| make init         | to install needed python dependencies         |
-| make my_dish      | To start the program                          |
-| ----------------- | --------------------------------------------- |
+| make innstall     | installs needed python dependencies           |
+| make my_dish      | starts the program                            |
 
 
 ## Instructions for developers
@@ -25,8 +25,8 @@ SPOONACULAR_API_KEY=<spoonacular_api_key_here>
 | ----------------- | --------------------------------------------- |
 | make help         | to see all make rules                         |
 | make my_dish      | executes the main program                     |
-| make init         | installs required packages                    |
-| make init_dev     | installs required development packages        |
+| make install      | installs required packages                    |
+| make install_dev  | installs required development packages        |
 | make test         | runs test                                     |
 | make test_verbose | runs test with verbose messaging              |
 | make coverage     | runs test, produces coverage and displays it  |

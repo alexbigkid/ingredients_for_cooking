@@ -1,13 +1,13 @@
-.PHONY:	upgrade_setuptools init init_dev test test_verbose my_dish settings help
+.PHONY:	upgrade_setuptools install install_dev test test_verbose my_dish settings help
 .SILENT: my_dish coverage
 
 upgrade_setuptools:
 	pip install --upgrade setuptools
 
-init: upgrade_setuptools
+install: upgrade_setuptools
 	pip install --user --requirement requirements.txt
 
-init_dev: upgrade_setuptools
+install_dev: upgrade_setuptools
 	pip install --user --requirement requirements_dev.txt
 
 test:
@@ -35,8 +35,8 @@ help:
 	@echo "-----------------------------------------------------------------------------"
 	@echo "  my_dish      - executes the main program"
 	@echo "-----------------------------------------------------------------------------"
-	@echo "  init         - installs required packages"
-	@echo "  init_dev     - installs required development packages"
+	@echo "  install      - installs required packages"
+	@echo "  install_dev  - installs required development packages"
 	@echo "-----------------------------------------------------------------------------"
 	@echo "  test         - runs test"
 	@echo "  test_verbose - runs test with verbose messaging"
