@@ -22,7 +22,6 @@ class Recipes():
     SPOONACULAR_API_KEY = 'SPOONACULAR_API_KEY'
     ENVIRONMENT_FILE_NAME = '.env'
     INVALID_RESPONSE_EXCEPTION_MESSAGE = 'EXCEPTION: Invalid response received.'
-
     API_KEY_NOT_FOUND_EXCEPTION_MESSAGE = 'EXCEPTION: spoonacular API key could not be found. Please load env variable SPOONACULAR_API_KEY with api key or set it in the .env file.'
 
 

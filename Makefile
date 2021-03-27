@@ -20,6 +20,7 @@ coverage:
 	coverage run --source src --omit src/__init__.py -m unittest discover --start-directory tests
 	@echo
 	coverage report
+	coverage xml
 
 my_dish:
 	python ./src/main.py
