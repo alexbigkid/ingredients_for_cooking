@@ -5,7 +5,7 @@ import requests
 import json
 
 # Local application imports
-from env_loader import EnvLoader
+from .env_loader import EnvLoader
 
 
 class Recipes():
@@ -30,7 +30,7 @@ class Recipes():
 
 
     def get_recipes(self, ingredient_list):
-        print('ingredients: ' + ', '.join([ingredient for ingredient in ingredient_list]))
+        # print('ingredients: ' + ', '.join([ingredient for ingredient in ingredient_list]))
         request_string = self.__create_request(ingredient_list)
         response = self.__send_request(request_string)
         # self.__print_response(response)
