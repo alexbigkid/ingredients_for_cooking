@@ -44,13 +44,13 @@ Since I was not very familar with unittest frame work (I used pytest in the past
 I experemented with different way writing unittests: using mocks, patches and DIs.
 Usually I'd write code with one style for better readability.
 
-##### Test were ran on:
+#### Test were ran on:
 - [x] MacOS Big Sur (local machine) / Python 3.8.8
 - [x] Linux Ubuntu 20.04 (pipeline machine) / Python 3.8.5
 - [ ] Windows 10
 
 
-##### program runs on:
+#### program runs on:
 - [x] MacOS Big Sur (local machine) / Python 3.8.8
 - [x] Linux Ubuntu 20.04 (pipeline machine) / Python 3.8.5
 - [ ] Windows 10
