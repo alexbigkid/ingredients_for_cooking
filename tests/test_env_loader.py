@@ -12,7 +12,7 @@ class TestEnvLoader(unittest.TestCase):
     def setUp(self):
         self.env_loader = EnvLoader()
 
-    def test_get_api_key_from_environment_variable(self):
+    def test_get_environment_variable_value(self):
         self.assertTrue(True)
 
     def test_set_environment_varaibales_from_file(self):

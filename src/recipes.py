@@ -52,10 +52,10 @@ class Recipes():
 
     def __get_api_key(self):
         env_loader = EnvLoader()
-        spoonacular_api_key = env_loader.get_api_key_from_environment_variable(self.SPOONACULAR_API_KEY)
+        spoonacular_api_key = env_loader.get_environment_variable_value(self.SPOONACULAR_API_KEY)
         if not spoonacular_api_key:
             env_loader.set_environment_varaibales_from_file(self.ENVIRONMENT_FILE_NAME)
-            spoonacular_api_key = env_loader.get_api_key_from_environment_variable(self.SPOONACULAR_API_KEY)
+            spoonacular_api_key = env_loader.get_environment_variable_value(self.SPOONACULAR_API_KEY)
             if not spoonacular_api_key:
                 raise Exception(self.INVALID_INPUT_EXCEPTION_MESSAGE)
         return spoonacular_api_key

@@ -4,7 +4,7 @@
 import os
 
 class EnvLoader():
-    def get_api_key_from_environment_variable(self, env_variable: str):
+    def get_environment_variable_value(self, env_variable: str):
         if env_variable in os.environ:
             return os.environ[env_variable]
         else:
