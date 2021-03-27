@@ -31,4 +31,4 @@ jobs:
                   make init_dev
                   export PATH=/home/runner/.local/bin:$PATH
                   make test
-                  coverage --version
+                  make coverage
