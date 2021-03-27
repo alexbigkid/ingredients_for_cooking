@@ -1,4 +1,4 @@
-# Ingredients for coocking
+# Ingredients for cooking
 Creates a shopping list with your favorite ingredients for recipes you liked.
 
 ## APY KEY note
