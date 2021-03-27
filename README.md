@@ -14,8 +14,10 @@ SPOONACULAR_API_KEY=<spoonacular_api_key_here>
 
 
 ## Instructions for users
-make init    - to install needed python dependencies
-make my_dish - To start the program
+| ----------------- | --------------------------------------------- |
+| make init         | to install needed python dependencies         |
+| make my_dish      | To start the program                          |
+| ----------------- | --------------------------------------------- |
 
 
 ## Instructions for developers
@@ -30,7 +32,7 @@ make my_dish - To start the program
 | make coverage     | runs test, produces coverage and displays it  |
 
 
-## Note for reviewers
+## Notes for reviewers
 Since I was not very familar with unittest frame work (I used pytest in the past)
 I experemented with different way writing tests: using mocks, patches and DIs
 That should be considered a unittest practice and not a bad testing design.
@@ -39,7 +41,7 @@ Usually I write code with one style for better readability.
 
 ## API used
 ### this project utilizes Spoonacular API to get recipes from ingredient list
-[Spoonacular API]([targetURL](https://spoonacular.com/food-api/docs))
+[Spoonacular API](https://spoonacular.com/food-api/docs)
 
 ### To get the recipes from the list of ingredients following API is used
-[Get recipes from ingredients API]([targetURL](https://spoonacular.com/food-api/docs#Search-Recipes-by-Ingredients))
+[Get recipes from ingredients API](https://spoonacular.com/food-api/docs#Search-Recipes-by-Ingredients)
