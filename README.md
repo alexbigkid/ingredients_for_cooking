@@ -19,16 +19,13 @@ make my_dish - To start the program
 
 
 ## Instructions for developers
-make help         - to see all the make rules
-----------------------------------------------------------------------------
-make my_dish      - executes the main program"
-----------------------------------------------------------------------------
-make init         - installs required packages"
-make init_dev     - installs required development packages"
-----------------------------------------------------------------------------
-make test         - runs test"
-make test_verbose - runs test with verbose messaging"
-make coverage     - runs test, produces coverage and displays it"
+make help         - to see all make rules
+make my_dish      - executes the main program
+make init         - installs required packages
+make init_dev     - installs required development packages
+make test         - runs test
+make test_verbose - runs test with verbose messaging
+make coverage     - runs test, produces coverage and displays it
 
 
 ## Note for reviewers
