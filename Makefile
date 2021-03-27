@@ -1,5 +1,5 @@
 .PHONY:	upgrade_setuptools init init_dev test test_verbose my_dish settings help
-.SILENT: my_dish
+.SILENT: my_dish coverage
 
 upgrade_setuptools:
 	pip install --upgrade setuptools
@@ -18,7 +18,8 @@ test_verbose:
 	python -m unittest discover --start-directory tests --verbose
 
 coverage:
-	coverage run --source src -m unittest discover --start-directory tests
+	coverage run --source src --omit src/__init__.py -m unittest discover --start-directory tests
+	@echo
 	coverage report
 # coverage html
 
@@ -26,8 +27,9 @@ my_dish:
 	python ./src/main.py
 
 settings:
-	@echo "HOME             =" ${HOME}
-	@echo "SHELL            =" ${SHELL}
+	@echo "HOME             = ${HOME}"
+	@echo "PWD              = ${PWD}"
+	@echo "SHELL            = ${SHELL}"
 
 help:
 	@echo "Targets:"
