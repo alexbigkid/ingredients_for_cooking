@@ -28,6 +28,6 @@ jobs:
             #   run: ./InstallTools.sh
             - name: Run unit tests
               run: |
-                  make init_dev
+                  make install_dev
                   export PATH=/home/runner/.local/bin:$PATH
                   make coverage
