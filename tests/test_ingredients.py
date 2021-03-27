@@ -1,8 +1,14 @@
-import unittest
+""" Unit tests for ingredients.py """
+
+# Standard library imports
 from io import StringIO
+import unittest
 from unittest.mock import patch
+
+# Third party imports
 from parameterized import parameterized
 
+# Local application imports
 from src.ingredients import Ingredients
 
 

@@ -1,7 +1,11 @@
+""" Sends request using spoonacular API and evaluates the response with recipes """
+
+# Standard library imports
 import requests
 import json
-import os
 
+# Local application imports
+from .env_loader import EnvLoader
 
 class Recipes():
     SPOONACULAR_API_URL = 'https://api.spoonacular.com/recipes/findByIngredients'
@@ -47,29 +51,14 @@ class Recipes():
         return request_string
 
     def __get_api_key(self):
-        spoonacular_api_key = self.__get_api_key_from_environment_variable(self.SPOONACULAR_API_KEY)
+        env_loader = EnvLoader()
+        spoonacular_api_key = env_loader.get_api_key_from_environment_variable(self.SPOONACULAR_API_KEY)
         if not spoonacular_api_key:
-            self.__set_environment_varaibales_from_file(self.ENVIRONMENT_FILE_NAME)
-            spoonacular_api_key = self.__get_api_key_from_environment_variable(self.SPOONACULAR_API_KEY)
+            env_loader.set_environment_varaibales_from_file(self.ENVIRONMENT_FILE_NAME)
+            spoonacular_api_key = env_loader.get_api_key_from_environment_variable(self.SPOONACULAR_API_KEY)
             if not spoonacular_api_key:
                 raise Exception(self.INVALID_INPUT_EXCEPTION_MESSAGE)
         return spoonacular_api_key
-
-    def __get_api_key_from_environment_variable(self, env_variable):
-        if env_variable in os.environ:
-            return os.environ[env_variable]
-        else:
-            return ''
-
-    def __set_environment_varaibales_from_file(self, file_with_path: str):
-        with open(file_with_path, 'r') as file_handle:
-            env_variables_dict = dict(
-                tuple(line.replace('\n', '').split('='))
-                for line in file_handle.readlines() if not line.startswith('#')
-            )
-            print(env_variables_dict)
-            if len(env_variables_dict) > 0:
-                os.environ.update(env_variables_dict)
 
     def __send_request(self, request_string):
         response = requests.get(request_string)
@@ -92,4 +81,4 @@ class Recipes():
         if json_list_length > 0:
             print(': '.join(['json_list_length', str(json_list_length)]))
             print('----------------------------------------------------')
-            print(''.join([json.dumps(i_recipe, indent=2) for i_recipe in json_list]))
+            print('\n'.join([json.dumps(i_recipe, indent=2) for i_recipe in json_list]))

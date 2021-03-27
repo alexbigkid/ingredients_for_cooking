@@ -1,8 +1,14 @@
+""" Main program for displaying ingredients list for shopping with the recipes liked """
+
+# Standard library imports
 import sys
-from ingredients import Ingredients
-from recipes import Recipes
-# import colorama
+
+# Third party imports
 from colorama import Fore, Style
+
+# Local application imports
+from .ingredients import Ingredients
+from .recipes import Recipes
 
 
 def get_ingredients():
@@ -21,7 +27,7 @@ def main():
         # print('You entered: ' + ', '.join(ingredient_list))
         # ingredient_list = ['apple', 'venigar', 'oil']
         ingredient_list = ['apple', 'sugar']
-        recipes = get_recipes(ingredient_list)
+        recipe_list = get_recipes(ingredient_list)
         # print results
     except Exception as exception:
         print(Fore.RED + f"ERROR: executing getting recipes with your favorite ingredients")
