@@ -1,4 +1,4 @@
-# Ingredients for cooking
+# Ingredients for cooking :octocat:
 Creates a shopping list with your favorite ingredients for recipes you liked.
 
 ## APY KEY note
@@ -62,3 +62,5 @@ Usually I'd write code with one style for better readability.
 
 #### To get the recipes from the list of ingredients following API is used
 [Get recipes from ingredients API](https://spoonacular.com/food-api/docs#Search-Recipes-by-Ingredients)
+
+:checkered_flag:
