@@ -3,7 +3,6 @@
 
 upgrade_setuptools:
 	pip install --upgrade setuptools
-	# @echo "Not doing anything"
 
 init: upgrade_setuptools
 	pip install --user --requirement requirements.txt
@@ -21,7 +20,6 @@ coverage:
 	coverage run --source src --omit src/__init__.py -m unittest discover --start-directory tests
 	@echo
 	coverage report
-# coverage html
 
 my_dish:
 	python ./src/main.py
