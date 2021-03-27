@@ -16,9 +16,11 @@ def get_ingredients():
     ingredients.ask_for_ingredients()
     return ingredients.read_input()
 
+
 def get_recipes(ingredients):
     recipes = Recipes()
     return recipes.get_recipes(ingredients)
+
 
 def main():
     exit_code = 0

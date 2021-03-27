@@ -17,6 +17,7 @@ class TestIngredients(unittest.TestCase):
     def setUp(self):
         self.ingredients = Ingredients()
 
+
     # -------------------------------------------------------------------------
     # Tests for ask_for_ingredients
     # -------------------------------------------------------------------------
@@ -26,6 +27,7 @@ class TestIngredients(unittest.TestCase):
             actual_stdout = fakeOutput.getvalue().rstrip('\n')
             self.assertEqual(
                 actual_stdout, self.ingredients.USER_PROMPT_FOR_INGREDIENTS)
+
 
     # -------------------------------------------------------------------------
     # Tests for read_input
@@ -42,6 +44,7 @@ class TestIngredients(unittest.TestCase):
             actual_input = self.ingredients.read_input()
             self.assertEqual(actual_input, expected)
 
+
     @parameterized.expand([
         [',OneEgg,', ['OneEgg']],
         [',,TwoEggs', ['TwoEggs']],
@@ -55,6 +58,7 @@ class TestIngredients(unittest.TestCase):
         with patch('builtins.input', return_value=input):
             actual_input = self.ingredients.read_input()
             self.assertEqual(actual_input, expected)
+
 
     @parameterized.expand([
         [''],
@@ -70,6 +74,7 @@ class TestIngredients(unittest.TestCase):
             with self.assertRaises(Exception) as exception_message:
                 self.ingredients.read_input()
             self.assertEqual(str(exception_message.exception), self.ingredients.INVALID_INPUT_EXCEPTION_MESSAGE)
+
 
 if __name__ == '__main__':
     unittest.main()

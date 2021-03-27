@@ -5,11 +5,13 @@ import os
 
 class EnvLoader():
 
+
     def get_environment_variable_value(self, env_variable: str):
         if env_variable in os.environ:
             return os.environ[env_variable]
         else:
             return ''
+
 
     def set_environment_varaibales_from_file(self, env_file_with_path: str):
         with open(env_file_with_path, 'r') as file_handle:

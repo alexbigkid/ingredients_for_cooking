@@ -4,8 +4,10 @@ class Ingredients():
     USER_PROMPT_FOR_INGREDIENTS = 'Please enter your favorite ingredients separated by comma:'
     INVALID_INPUT_EXCEPTION_MESSAGE = 'EXCEPTION: Ivalid input. Please use only letters and white spaces.'
 
+
     def ask_for_ingredients(self):
         print(self.USER_PROMPT_FOR_INGREDIENTS)
+
 
     def read_input(self):
         ingredients = input()
@@ -16,9 +18,11 @@ class Ingredients():
         else:
             raise Exception(self.INVALID_INPUT_EXCEPTION_MESSAGE)
 
+
     def __sanitize_input(self, ingredient_list):
         ingredients = [ingredient.strip(' ') for ingredient in ingredient_list]
         return list(filter(None, ingredients))
+
 
     def __is_input_valid(self, ingredient_list):
         return len(ingredient_list) != 0 and \

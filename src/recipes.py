@@ -7,6 +7,7 @@ import json
 # Local application imports
 from .env_loader import EnvLoader
 
+
 class Recipes():
     SPOONACULAR_API_URL = 'https://api.spoonacular.com/recipes/findByIngredients'
     INGREDIENTS_KEY = 'ingredients'     # A comma-separated list of ingredients that the recipes should contain.
@@ -35,6 +36,7 @@ class Recipes():
         else:
             raise Exception(self.INVALID_RESPONSE)
 
+
     def __create_request(self, ingredient_list):
         api_key_value       = self.__get_api_key()
         ingredients         = ',+'.join([ingredient for ingredient in ingredient_list])
@@ -49,6 +51,7 @@ class Recipes():
         # print(request_string)
         return request_string
 
+
     def __get_api_key(self):
         env_loader = EnvLoader()
         spoonacular_api_key = env_loader.get_environment_variable_value(self.SPOONACULAR_API_KEY)
@@ -59,6 +62,7 @@ class Recipes():
                 raise Exception(self.INVALID_INPUT_EXCEPTION_MESSAGE)
         return spoonacular_api_key
 
+
     def __send_request(self, request_string):
         response = requests.get(request_string)
         # print('status code: ' + str(response.status_code))
@@ -68,11 +72,14 @@ class Recipes():
         self.__print_json_list(response_json)
         return response
 
+
     def __is_response_valid(self, response):
         return True
 
+
     def __print_response(self, response):
         pass
+
 
     def __print_json_list(self, json_list):
         ''' This method is not tested since it used for debug info only '''
