@@ -6,12 +6,13 @@ To be able to execute this python program an API KEY for the Spoonacular
 http service is required. Since it is sensitive information and should
 not be added to the plain view of source code, you would need to set up
 an environment variable in you terminal with following command:<br>
-export SPOONACULAR_API_KEY=<spoonacular_api_key_here>
+***export SPOONACULAR_API_KEY=<spoonacular_api_key_here>***
 
-Or alternatively you can create file .env in root directory of this project
-and add following line into the .env file:<br>
-SPOONACULAR_API_KEY=<spoonacular_api_key_here>
+Or alternatively you can create file ***.env*** in root directory of this project
+and add following line into the ***.env*** file:<br>
+***SPOONACULAR_API_KEY=<spoonacular_api_key_here>***
 
+*You probably alread have your own API key, you could use otherwise I happy to share if you ask.*
 
 ## Instructions for users
 | command      | description                         |
@@ -39,8 +40,8 @@ Usually I'd write code with one style for better readability.
 
 
 ## API used
-### this project utilizes Spoonacular API to get recipes from ingredient list
+#### this project utilizes Spoonacular API to get recipes from ingredient list
 [Spoonacular API](https://spoonacular.com/food-api/docs)
 
-### To get the recipes from the list of ingredients following API is used
+#### To get the recipes from the list of ingredients following API is used
 [Get recipes from ingredients API](https://spoonacular.com/food-api/docs#Search-Recipes-by-Ingredients)
