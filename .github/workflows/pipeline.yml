@@ -30,3 +30,4 @@ jobs:
               run: |
                   make init_dev
                   make test
+                  make coverage

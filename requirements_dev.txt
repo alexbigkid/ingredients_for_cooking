@@ -3,6 +3,7 @@
 
 # Install test dependencies
 parameterized
+coverage
 #mock
 #black               # code formatting
 #flake8              # linting, formatting, analysis
