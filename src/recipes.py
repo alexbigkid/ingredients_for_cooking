@@ -25,19 +25,15 @@ class Recipes():
     INVALID_RESPONSE_EXCEPTION_MESSAGE = 'EXCEPTION: Invalid response received.'
     API_KEY_NOT_FOUND_EXCEPTION_MESSAGE = 'EXCEPTION: spoonacular API key could not be found. Please load env variable SPOONACULAR_API_KEY with api key or set it in the .env file.'
 
-    def __init__(self, request_client = None):
-        self.__request_client = request_client or requests
-
 
     def get_recipes(self, ingredient_list):
         # print('ingredients: ' + ', '.join([ingredient for ingredient in ingredient_list]))
         request_string = self.__create_request(ingredient_list)
         response = self.__send_request(request_string)
-        # self.__print_response(response)
         if self.__is_response_valid(response):
             return response.json()
         else:
-            raise Exception(self.INVALID_RESPONSE)
+            raise Exception(self.INVALID_RESPONSE_EXCEPTION_MESSAGE)
 
 
     def __create_request(self, ingredient_list):
@@ -51,7 +47,6 @@ class Recipes():
         req_api_key         = '='.join([self.API_KEY, api_key_value])
         req_parameters      = '&'.join([req_ingredients, req_number, req_limit_license, req_ranking, req_ignore_pantry, req_api_key])
         request_string      = '?'.join([self.SPOONACULAR_API_URL, req_parameters])
-        # print(request_string)
         return request_string
 
 
@@ -67,17 +62,13 @@ class Recipes():
 
 
     def __send_request(self, request_string):
-        response = self.__request_client.get(request_string)
-        # print('status code: ' + str(response.status_code))
-        # print('response_text: ' + response.text)
-        # print('\n')
-        response_json = response.json()
-        self.__print_json_list(response_json)
+        response = requests.get(request_string)
+        # self.__print_json_list(response.json())
         return response
 
 
     def __is_response_valid(self, response):
-        return True
+        return response.ok and len(response.json()) > 0
 
 
     def __print_json_list(self, json_list):
