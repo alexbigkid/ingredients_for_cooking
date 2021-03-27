@@ -6,13 +6,15 @@ To be able to execute this python program an API KEY for the Spoonacular
 http service is required. Since it is sensitive information and should
 not be added to the plain view of source code, you would need to set up
 an environment variable in you terminal with following command:<br>
-***export SPOONACULAR_API_KEY=<spoonacular_api_key_here>***
+![#c5f015]***export SPOONACULAR_API_KEY=<spoonacular_api_key_here>***
 
 Or alternatively you can create file ***.env*** in root directory of this project
 and add following line into the ***.env*** file:<br>
-***SPOONACULAR_API_KEY=<spoonacular_api_key_here>***
+![#c5f015]***SPOONACULAR_API_KEY=<spoonacular_api_key_here>***
 
-*You probably alread have your own API key, you could use otherwise I happy to share if you ask.*
+``` diff
++ You probably alread have your own API key, you could use otherwise I happy to share if you ask.
+```
 
 ## Instructions for users
 | command      | description                         |
