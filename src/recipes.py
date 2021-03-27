@@ -5,7 +5,7 @@ import requests
 import json
 
 # Local application imports
-from .env_loader import EnvLoader
+from env_loader import EnvLoader
 
 
 class Recipes():
@@ -24,6 +24,9 @@ class Recipes():
     ENVIRONMENT_FILE_NAME = '.env'
     INVALID_RESPONSE_EXCEPTION_MESSAGE = 'EXCEPTION: Invalid response received.'
     API_KEY_NOT_FOUND_EXCEPTION_MESSAGE = 'EXCEPTION: spoonacular API key could not be found. Please load env variable SPOONACULAR_API_KEY with api key or set it in the .env file.'
+
+    def __init__(self, request_client = None):
+        self.__request_client = request_client or requests
 
 
     def get_recipes(self, ingredient_list):
@@ -64,7 +67,7 @@ class Recipes():
 
 
     def __send_request(self, request_string):
-        response = requests.get(request_string)
+        response = self.__request_client.get(request_string)
         # print('status code: ' + str(response.status_code))
         # print('response_text: ' + response.text)
         # print('\n')

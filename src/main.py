@@ -7,8 +7,8 @@ import sys
 from colorama import Fore, Style
 
 # Local application imports
-from .ingredients import Ingredients
-from .recipes import Recipes
+from ingredients import Ingredients
+from recipes import Recipes
 
 
 def get_ingredients():
