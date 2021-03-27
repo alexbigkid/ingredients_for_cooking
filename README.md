@@ -14,15 +14,15 @@ SPOONACULAR_API_KEY=<spoonacular_api_key_here>
 
 
 ## Instructions for users
-| make rule    | description                         |
-| ------------ | ----------------------------------- |
+| command      | description                         |
+| :----------- | :---------------------------------- |
 | make install | installs needed python dependencies |
 | make my_dish | starts the program                  |
 
 
 ## Instructions for developers
-| make rule         | description                                  |
-| ----------------- | -------------------------------------------- |
+| command           | description                                  |
+| :---------------- | :------------------------------------------- |
 | make help         | to see all make rules                        |
 | make my_dish      | executes the main program                    |
 | make install      | installs required packages                   |
@@ -34,9 +34,8 @@ SPOONACULAR_API_KEY=<spoonacular_api_key_here>
 
 ## Notes for reviewers
 Since I was not very familar with unittest frame work (I used pytest in the past)
-I experemented with different way writing tests: using mocks, patches and DIs
-That should be considered a unittest practice and not a bad testing design.
-Usually I write code with one style for better readability.
+I experemented with different way writing unittests: using mocks, patches and DIs.
+Usually I'd write code with one style for better readability.
 
 
 ## API used
