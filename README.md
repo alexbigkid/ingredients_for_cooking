@@ -44,6 +44,11 @@ Since I was not very familar with unittest frame work (I used pytest in the past
 I experemented with different way writing unittests: using mocks, patches and DIs.
 Usually I'd write code with one style for better readability.
 
+There are minimal code comments, I was following the Agile
+[Clean Code](https://www.oreilly.com/library/view/clean-code-a/9780136083238/)
+guide lines from Uncle Bob. Code, function and variable naming should be descriptive.
+The comments can lie, since code can be updated, but developer can forget to update comments.
+
 #### Test were ran on:
 - [x] MacOS Big Sur (local machine) / Python 3.8.8
 - [x] Linux Ubuntu 20.04 (pipeline machine) / Python 3.8.5
