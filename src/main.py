@@ -10,6 +10,7 @@ from colorama import Fore, Style
 from ingredients import Ingredients
 from recipes import Recipes
 from recipe_view import RecipeView
+from shopping_list import ShoppingList
 
 
 def get_ingredients():
@@ -23,10 +24,15 @@ def get_recipes(ingredients):
     return recipes.get_recipes(ingredients)
 
 
-def show_results(recipes):
-    result = RecipeView(recipes)
-    result.show_recipe_list()
-    result.show_final_result()
+def get_liked_recipes(recipes):
+    recipe_selection = RecipeView(recipes)
+    recipe_selection.show_recipe_list()
+    return recipe_selection.get_liked_recipe_list()
+
+def show_shopping_list(liked_recipe_list):
+    shopping_list = ShoppingList(liked_recipe_list)
+    shopping_list.get_price_breakdown()
+    shopping_list.show_final_result()
 
 
 def main():
@@ -37,7 +43,8 @@ def main():
         # ingredient_list = ['granny smith apples', 'sugar', 'venigar']
         ingredient_list = ['garlic', 'ginger', 'granny smith apple']
         recipe_list = get_recipes(ingredient_list)
-        show_results(recipe_list)
+        liked_recipe_list = get_liked_recipes(recipe_list)
+        show_shopping_list(liked_recipe_list)
     except Exception as exception:
         print(Fore.RED + f"ERROR: executing getting recipes with your favorite ingredients")
         print(f"{exception}{Style.RESET_ALL}")

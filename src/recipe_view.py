@@ -1,7 +1,4 @@
-"""
-Shows user recipes. User is prompted to select recipes to his/her liking.
-The summery of the shopping cart will be displayed on the end
-"""
+"""Shows user recipes. User is prompted to select recipes to his/her liking."""
 
 # Standard library imports
 
@@ -9,7 +6,6 @@ The summery of the shopping cart will be displayed on the end
 from colorama import Fore, Style
 
 # Local application imports
-from recipes import Recipes
 
 
 class RecipeView():
@@ -34,7 +30,7 @@ class RecipeView():
         if not len(recipe_list) > 0:
             raise Exception(self.INVALID_NUMBER_OF_RECIPES_PASSED_IN)
         self.__recipe_list = recipe_list
-        self.__recipe_liked_list = []
+        self.__liked_recipe_list = []
 
 
     def show_recipe_list(self):
@@ -46,12 +42,12 @@ class RecipeView():
             did_user_like_it = self.__did_user_like_the_recipe(users_answer)
             self.__print_users_answer_for_confirmation(did_user_like_it)
             if did_user_like_it:
-                self.__recipe_liked_list.append(recipe)
+                self.__liked_recipe_list.append(recipe)
             self.__print_separation_line('-')
 
 
-    def show_final_result(self):
-        pass
+    def get_liked_recipe_list(self):
+        return self.__liked_recipe_list
 
 
     def __print_number_of_recipes(self):
