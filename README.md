@@ -29,6 +29,8 @@ and add following line into the ***.env*** file:<br>
 
 - The project should work on MacOS and Linux and any other unix like system
 - I haven't tried Windows, since I don't own a windows machine
+- All required packages to run the app are in requirements.txt
+- All require packages to run test are in requirements_dev.txt
 
 
 
