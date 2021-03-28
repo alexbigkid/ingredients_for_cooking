@@ -98,5 +98,3 @@ class ResultView():
         print('You answered with: ' + (Fore.GREEN + f"Yes" if did_user_like_it else Fore.RED + f"No"))
         print(f"{Style.RESET_ALL}")
 
-        # print(Fore.RED + f"ERROR: executing getting recipes with your favorite ingredients")
-        # print(f"{exception}{Style.RESET_ALL}")
