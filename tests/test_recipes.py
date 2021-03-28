@@ -67,7 +67,7 @@ class TestRecipes(unittest.TestCase):
     @patch.dict(os.environ, {'SPOONACULAR_API_KEY': '[valid_api_key]'})
     def test_get_recipes_should_throw_given_valid_json_but_response_not_ok(self):
         with patch('src.recipes.requests.get') as mock_get:
-            actual_response = ''
+            actual_response = self.JSON_DATA_NOT_CHNAGED
             mock_get.return_value.ok = False
             mock_get.return_value.json.return_value = self.VALID_JSON_DATA
             with self.assertRaises(Exception) as exception_message:
@@ -75,7 +75,7 @@ class TestRecipes(unittest.TestCase):
             self.assertEqual(str(exception_message.exception), self.recipes.INVALID_RESPONSE_EXCEPTION_MESSAGE)
             self.assertEqual(os.environ[self.recipes.SPOONACULAR_API_KEY], '[valid_api_key]')
             mock_get.assert_called_with(self.REQUEST_URL)
-            self.assertEqual(actual_response, '')
+            self.assertEqual(actual_response, self.JSON_DATA_NOT_CHNAGED)
 
 
     @patch.dict(os.environ, {'SPOONACULAR_API_KEY': '[valid_api_key]'})
