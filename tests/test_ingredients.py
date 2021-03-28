@@ -9,8 +9,7 @@ from unittest.mock import patch
 from parameterized import parameterized
 
 # Local application imports
-from src.ingredients import Ingredients
-
+from context import Ingredients
 
 class TestIngredients(unittest.TestCase):
 

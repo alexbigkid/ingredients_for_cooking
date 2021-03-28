@@ -5,7 +5,7 @@ import requests
 import json
 
 # Local application imports
-from .env_loader import EnvLoader
+from env_loader import EnvLoader
 
 
 class Recipes():
@@ -71,10 +71,10 @@ class Recipes():
         return response.ok and len(response.json()) > 0
 
 
-    def __print_json_list(self, json_list):
-        ''' This method is not tested since it used for debug info only '''
-        json_list_length = len(json_list)
-        if json_list_length > 0:
-            print(': '.join(['json_list_length', str(json_list_length)]))
-            print('----------------------------------------------------')
-            print('\n'.join([json.dumps(i_recipe, indent=2) for i_recipe in json_list]))
+    # def __print_json_list(self, json_list):
+    #     ''' This method is not tested since it used for debug info only '''
+    #     json_list_length = len(json_list)
+    #     if json_list_length > 0:
+    #         print(': '.join(['json_list_length', str(json_list_length)]))
+    #         print('----------------------------------------------------')
+    #         print('\n'.join([json.dumps(i_recipe, indent=2) for i_recipe in json_list]))

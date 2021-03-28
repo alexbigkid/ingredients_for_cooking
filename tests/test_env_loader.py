@@ -7,7 +7,7 @@ import unittest
 from unittest.mock import patch, mock_open
 
 # Local application imports
-from src.env_loader import EnvLoader
+from context import EnvLoader
 
 
 class TestEnvLoader(unittest.TestCase):

@@ -8,7 +8,7 @@ from unittest.mock import patch, mock_open
 # Third party imports
 
 # Local application imports
-from src.recipes import Recipes
+from context import Recipes
 
 
 class TestRecipes(unittest.TestCase):
