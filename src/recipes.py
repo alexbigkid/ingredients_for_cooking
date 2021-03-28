@@ -24,7 +24,7 @@ class Recipes():
     ENVIRONMENT_FILE_NAME = '.env'
     INVALID_RESPONSE_EXCEPTION_MESSAGE = 'EXCEPTION: Invalid response received.'
     API_KEY_NOT_FOUND_EXCEPTION_MESSAGE = 'EXCEPTION: spoonacular API key could not be found. Please load env variable SPOONACULAR_API_KEY with api key or set it in the .env file.'
-
+    NO_RECIPES_FOUND_PLEASE_TRY_AGAIN_EXCEPTION_MESSAGE = 'No Recipes were found for yourt ingredients. Please try again'
 
     def get_recipes(self, ingredient_list):
         # print('ingredients: ' + ', '.join([ingredient for ingredient in ingredient_list]))
@@ -32,13 +32,11 @@ class Recipes():
         response = self.__send_request(request_string)
         if self.__is_response_valid(response):
             return response.json()
-        else:
-            raise Exception(self.INVALID_RESPONSE_EXCEPTION_MESSAGE)
 
 
     def __create_request(self, ingredient_list):
         api_key_value       = self.__get_api_key()
-        ingredients         = ',+'.join([ingredient for ingredient in ingredient_list])
+        ingredients         = ',+'.join([ingredient.replace(' ','%20') for ingredient in ingredient_list])
         req_ingredients     = '='.join([self.INGREDIENTS_KEY, ingredients])
         req_number          = '='.join([self.NUMBER_KEY, self.NUMBER_VALUE])
         req_limit_license   = '='.join([self.LIMIT_LICENSE_KEY, self.LIMIT_LICENSE_VALUE])
@@ -47,6 +45,7 @@ class Recipes():
         req_api_key         = '='.join([self.API_KEY, api_key_value])
         req_parameters      = '&'.join([req_ingredients, req_number, req_limit_license, req_ranking, req_ignore_pantry, req_api_key])
         request_string      = '?'.join([self.SPOONACULAR_API_URL, req_parameters])
+        # print(request_string)
         return request_string
 
 
@@ -64,12 +63,16 @@ class Recipes():
     def __send_request(self, request_string):
         response = requests.get(request_string)
         # self.__print_json_list(response.json())
+        # print(response.text)
         return response
 
 
     def __is_response_valid(self, response):
-        return response.ok and len(response.json()) > 0
-
+        if not response.ok:
+            raise Exception(self.INVALID_RESPONSE_EXCEPTION_MESSAGE)
+        if not len(response.json()) > 0:
+            raise Exception(self.NO_RECIPES_FOUND_PLEASE_TRY_AGAIN_EXCEPTION_MESSAGE)
+        return True
 
     # def __print_json_list(self, json_list):
     #     ''' This method is not tested since it used for debug info only '''

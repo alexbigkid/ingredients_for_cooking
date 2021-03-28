@@ -13,7 +13,7 @@ from context import Recipes
 
 class TestRecipes(unittest.TestCase):
     INGREDIENTS = ['granadilla', 'tomate de arbol', 'lulo', 'maracuya', 'guanabana']
-    REQUEST_URL = 'https://api.spoonacular.com/recipes/findByIngredients?ingredients=granadilla,+tomate de arbol,+lulo,+maracuya,+guanabana&number=8&limitLicense=true&ranking=1&ignorePantry=true&apiKey=[valid_api_key]'
+    REQUEST_URL = 'https://api.spoonacular.com/recipes/findByIngredients?ingredients=granadilla,+tomate%20de%20arbol,+lulo,+maracuya,+guanabana&number=8&limitLicense=true&ranking=1&ignorePantry=true&apiKey=[valid_api_key]'
     VALID_JSON_DATA = [{'key1': 'value1'}, {'key2': 'value2'}]
     INVALID_JSON_DATA = []
     JSON_DATA_NOT_CHNAGED = [{'data': 'did not change'}]
@@ -58,7 +58,7 @@ class TestRecipes(unittest.TestCase):
             mock_get.return_value.json.return_value = self.INVALID_JSON_DATA
             with self.assertRaises(Exception) as exception_message:
                 actual_response = self.recipes.get_recipes(self.INGREDIENTS)
-            self.assertEqual(str(exception_message.exception), self.recipes.INVALID_RESPONSE_EXCEPTION_MESSAGE)
+            self.assertEqual(str(exception_message.exception), self.recipes.NO_RECIPES_FOUND_PLEASE_TRY_AGAIN_EXCEPTION_MESSAGE)
             self.assertEqual(os.environ[self.recipes.SPOONACULAR_API_KEY], '[valid_api_key]')
             mock_get.assert_called_with(self.REQUEST_URL)
             self.assertEqual(actual_response, self.JSON_DATA_NOT_CHNAGED)
@@ -88,6 +88,8 @@ class TestRecipes(unittest.TestCase):
             self.assertEqual(os.environ[self.recipes.SPOONACULAR_API_KEY], '[valid_api_key]')
             mock_get.assert_called_with(self.REQUEST_URL)
             self.assertEqual(actual_response, self.VALID_JSON_DATA)
+
+    # todo: write test for ingredients which contain white spaces, the get request string should not contain white spaces
 
 
 if __name__ == '__main__':
