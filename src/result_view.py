@@ -3,38 +3,100 @@ Shows user recipes. User is prompted to select recipes to his/her liking.
 The summery of the shopping cart will be displayed on the end
 """
 
+# Standard library imports
+
+# Third party imports
+from colorama import Fore, Style
+
+# Local application imports
+from recipes import Recipes
+
+
 class ResultView():
+    INVALID_NUMBER_OF_RECIPES_PASSED_IN = 'EXCEPTION: invalid number of recipes passed in'
+    TITLE_FOR_NUMBER_OF_RECIPES_FOUND = 'Number of recipes found matching provided ingredients'
+    TITLE_FOR_RECIPE_NUMBER = 'Recipe number'
+    TITLE_FOR_RECIPE_NAME = 'Recipe title'
+    TITLE_FOR_PROVIDED_INGREDIENTS = 'Your ingredients'
+    TITLE_FOR_MISSED_INGREDIENTS = 'Additional ingredients'
+    RECIPE_TITLE_KEY = 'title'
+    RECIPE_USED_INGREDIENTS_KEY = 'usedIngredients'
+    RECIPE_MISSED_INGREDIENTS_KEY = 'missedIngredients'
+    RECIPE_INGREDIENT_NAME_KEY = 'name'
+    RECIPE_PROMPT_FOR_USER_LINE1 = 'Do you like the recipe? No maybe! Please answer with yes(y) or no(n)'
+    RECIPE_PROMPT_FOR_USER_LINE2 = 'Anything else but "Yes" would be taken as "No"'
+    RECIPE_PROMPT_FOR_USER_LINE3 = '> '
 
 
     def __init__(self, recipe_list):
-        self.recipe_list = recipe_list
-        self.recipe_liked_list = []
+        # protect module from invalid input in case it is taken out of this package
+        # and used somewhere else
+        if not len(recipe_list) > 0:
+            raise Exception(self.INVALID_NUMBER_OF_RECIPES_PASSED_IN)
+        self.__recipe_list = recipe_list
+        self.__recipe_liked_list = []
 
 
     def show_recipe_list(self):
-        pass
+        self.__print_number_of_recipes()
+        for i, recipe in enumerate(self.__recipe_list):
+            self.__print_recipe_number(str(i+1))
+            self.__print_recipe(recipe)
+            users_answer = self.__ask_user_for_selection()
+            did_user_like_it = self.__did_user_like_the_recipe(users_answer)
+            self.__print_users_answer_for_confirmation(did_user_like_it)
+            if did_user_like_it:
+                self.__recipe_liked_list.append(recipe)
+            self.__print_separation_line('-')
 
 
     def show_final_result(self):
         pass
 
 
-    def __show_recipe(self, recipe):
-        pass
+    def __print_number_of_recipes(self):
+        self.__print_title_line(self.TITLE_FOR_NUMBER_OF_RECIPES_FOUND, str(len(self.__recipe_list)))
+        self.__print_separation_line('=')
 
 
-    def __ask_user_selection(self, recipe):
-        pass
+    def __print_recipe_number(self, number_str):
+        self.__print_title_line(self.TITLE_FOR_RECIPE_NUMBER, number_str)
 
 
+    def __print_recipe(self, recipe):
+        self.__print_title_line(self.TITLE_FOR_RECIPE_NAME, recipe[self.RECIPE_TITLE_KEY])
+        self.__print_ingredients_line(self.TITLE_FOR_PROVIDED_INGREDIENTS, recipe[self.RECIPE_USED_INGREDIENTS_KEY])
+        self.__print_ingredients_line(self.TITLE_FOR_MISSED_INGREDIENTS, recipe[self.RECIPE_MISSED_INGREDIENTS_KEY])
 
 
-
-    # def __sanitize_input(self, ingredient_list):
-    #     ingredients = [ingredient.strip(' ') for ingredient in ingredient_list]
-    #     return list(filter(None, ingredients))
+    def __print_title_line(self, title_name, value):
+        print(': '.join([title_name, value]))
 
 
-    # def __is_input_valid(self, ingredient_list):
-    #     return len(ingredient_list) != 0 and \
-    #         all(ingredient.replace(' ','').isalpha() for ingredient in ingredient_list)
+    def __print_separation_line(self, sign_to_print):
+        print(sign_to_print * 80)
+
+
+    def __print_ingredients_line(self, title_name, ingredient_list) -> None:
+        list_length = len(ingredient_list)
+        if list_length > 0:
+            ingredients_str = ', '.join([ingredient[self.RECIPE_INGREDIENT_NAME_KEY] for ingredient in ingredient_list])
+            self.__print_title_line(title_name, ingredients_str)
+
+
+    def __ask_user_for_selection(self):
+        print(Fore.YELLOW + f"{self.RECIPE_PROMPT_FOR_USER_LINE1}")
+        print(self.RECIPE_PROMPT_FOR_USER_LINE2)
+        return input(self.RECIPE_PROMPT_FOR_USER_LINE3)
+
+
+    def __did_user_like_the_recipe(self, users_answer: str) -> bool:
+        yes_string = users_answer.lower()
+        return yes_string == 'yes' or yes_string == 'y'
+
+    def __print_users_answer_for_confirmation(self, did_user_like_it):
+        print('You answered with: ' + (Fore.GREEN + f"Yes" if did_user_like_it else Fore.RED + f"No"))
+        print(f"{Style.RESET_ALL}")
+
+        # print(Fore.RED + f"ERROR: executing getting recipes with your favorite ingredients")
+        # print(f"{exception}{Style.RESET_ALL}")
