@@ -22,12 +22,15 @@ class ShoppingList():
     INGREDIENT_AISLE_NAME_KEY = 'aisle'
     MISSING_INGREDIENTS_KEY = 'missedIngredients'
     PRICE_LIST_INGREDIENT_KEY = 'ingredients'
+    PRICE_LIST_TOTAL_COST_KEY = 'totalCost'
     SPOONACULAR_PRICE_BREAKDOWN_API_URL = 'https://api.spoonacular.com/recipes'
     SPOONACULAR_PRICE_BREAKDOWN_API_JSON = 'priceBreakdownWidget.json'
     API_KEY = 'apiKey'                  # API key is the authentication to use to run the get http request. the value must be kept secret
-    PRETTY_TABLE_INGREDIENT = 'Missing ingredient list (well most of them)'
+    PRETTY_TABLE_INGREDIENT = 'Missing ingredient list (well, most of them)'
     PRETTY_TABLE_AISLE = 'Aisle where to find missing ingredients in the store'
     PRETTY_TABLE_PRICE = 'Price ($)'
+    ESTIMATED_COST_FOR_MISSING_INGREDIENTS_TEXT = 'Estimated cost for missing ingredients'
+    ESTIMATED_COST_FOR_ALL_INGREDIENTS_TEXT = 'Estimated cost for all ingredients'
 
 
     def __init__(self, liked_recipe_list):
@@ -106,6 +109,7 @@ class ShoppingList():
     def __print_info_for_all_missing_ingredients_in_recipe(self, recipe, price_breakdown):
         missed_ingredient_list = recipe[self.MISSING_INGREDIENTS_KEY]
         ingredient_price_list = price_breakdown[self.PRICE_LIST_INGREDIENT_KEY]
+        total_missed_ingredients_price = 0.0
         pretty_table = PrettyTable()
         pretty_table.set_style(MSWORD_FRIENDLY)
         pretty_table.field_names = [self.PRETTY_TABLE_INGREDIENT, self.PRETTY_TABLE_AISLE, self.PRETTY_TABLE_PRICE]
@@ -118,8 +122,11 @@ class ShoppingList():
                     pretty_table.add_row([
                         missed_ingredient[self.INGREDIENT_NAME_KEY],
                         missed_ingredient[self.INGREDIENT_AISLE_NAME_KEY],
-                        ingredient_price[self.INGREDIENT_PRICE_KEY]
+                        str(ingredient_price[self.INGREDIENT_PRICE_KEY])
                     ])
+                    total_missed_ingredients_price += ingredient_price[self.INGREDIENT_PRICE_KEY]
+        pretty_table.add_row([self.ESTIMATED_COST_FOR_MISSING_INGREDIENTS_TEXT, '', str(round(total_missed_ingredients_price,2))])
+        pretty_table.add_row([self.ESTIMATED_COST_FOR_ALL_INGREDIENTS_TEXT, '', str(price_breakdown[self.PRICE_LIST_TOTAL_COST_KEY])])
         print(pretty_table.get_string(title=recipe[self.RECIPE_TITTLE_KEY]))
 
 
