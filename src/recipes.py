@@ -1,15 +1,15 @@
 """Sends request using spoonacular API and evaluates the response with recipes"""
 
 # Standard library imports
-import requests
 import json
+import requests
 
 # Local application imports
-from env_loader import EnvLoader
+from api_key_loader import ApiKeyLoader
 
 
 class Recipes():
-    SPOONACULAR_API_URL = 'https://api.spoonacular.com/recipes/findByIngredients'
+    SPOONACULAR_FIND_BY_INGREDIENTS_API_URL = 'https://api.spoonacular.com/recipes/findByIngredients'
     INGREDIENTS_KEY = 'ingredients'     # A comma-separated list of ingredients that the recipes should contain.
     NUMBER_KEY = 'number'               # The maximum number of recipes to return (between 1 and 100). Defaults to 10.
     NUMBER_VALUE = '8'
@@ -20,10 +20,7 @@ class Recipes():
     IGNORE_PANTRY_KEY = 'ignorePantry'  # Whether to ignore typical pantry items, such as water, salt, flour, etc.
     IGNORE_PANTRY_VALUE = 'true'
     API_KEY = 'apiKey'                  # API key is the authentication to use to run the get http request. the value must be kept secret
-    SPOONACULAR_API_KEY = 'SPOONACULAR_API_KEY'
-    ENVIRONMENT_FILE_NAME = '.env'
     INVALID_RESPONSE_EXCEPTION_MESSAGE = 'EXCEPTION: Invalid response received.'
-    API_KEY_NOT_FOUND_EXCEPTION_MESSAGE = 'EXCEPTION: spoonacular API key could not be found. Please load env variable SPOONACULAR_API_KEY with api key or set it in the .env file.'
     NO_RECIPES_FOUND_PLEASE_TRY_AGAIN_EXCEPTION_MESSAGE = 'No Recipes were found for yourt ingredients. Please try again'
 
     def get_recipes(self, ingredient_list):
@@ -44,26 +41,20 @@ class Recipes():
         req_ignore_pantry   = '='.join([self.IGNORE_PANTRY_KEY, self.IGNORE_PANTRY_VALUE])
         req_api_key         = '='.join([self.API_KEY, api_key_value])
         req_parameters      = '&'.join([req_ingredients, req_number, req_limit_license, req_ranking, req_ignore_pantry, req_api_key])
-        request_string      = '?'.join([self.SPOONACULAR_API_URL, req_parameters])
+        request_string      = '?'.join([self.SPOONACULAR_FIND_BY_INGREDIENTS_API_URL, req_parameters])
         # print(request_string)
         return request_string
 
 
     def __get_api_key(self):
-        env_loader = EnvLoader()
-        spoonacular_api_key = env_loader.get_environment_variable_value(self.SPOONACULAR_API_KEY)
-        if not spoonacular_api_key:
-            env_loader.set_environment_varaibales_from_file(self.ENVIRONMENT_FILE_NAME)
-            spoonacular_api_key = env_loader.get_environment_variable_value(self.SPOONACULAR_API_KEY)
-            if not spoonacular_api_key:
-                raise Exception(self.API_KEY_NOT_FOUND_EXCEPTION_MESSAGE)
-        return spoonacular_api_key
+        api_key_loader = ApiKeyLoader()
+        return api_key_loader.get_api_key()
 
 
     def __send_request(self, request_string):
         response = requests.get(request_string)
         # self.__print_json_list(response.json())
-        # print(response.text)
+        print(response.text)
         return response
 
 
