@@ -29,10 +29,12 @@ def get_liked_recipes(recipes):
     recipe_selection.show_recipe_list()
     return recipe_selection.get_liked_recipe_list()
 
+
 def show_shopping_list(liked_recipe_list):
     shopping_list = ShoppingList(liked_recipe_list)
     shopping_list.get_price_breakdown()
-    shopping_list.show_final_result()
+    shopping_list.print_price_per_recipe()
+    shopping_list.print_final_result()
 
 
 def main():
