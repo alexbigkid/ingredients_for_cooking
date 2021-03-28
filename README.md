@@ -20,6 +20,18 @@ and add following line into the ***.env*** file:<br>
 + You probably alread have your own API key, you could use. Otherwise I happy to share if you ask.
 ```
 
+## Prerequisites tools
+| tool   | description                                        |
+| :----- | :------------------------------------------------- |
+| make   | tool to execute compile instructions from Makefile |
+| pip    | python package installer                           |
+| python | python interpreter (I used for this project 3.8.8) |
+
+- The project should work on MacOS and Linux and any other unix like system
+- I haven't tried Windows, since I don't own a windows machine
+
+
+
 ## Instructions for users
 | command      | description                         |
 | :----------- | :---------------------------------- |
@@ -52,13 +64,13 @@ The comments can lie, since code can be updated, but developer can forget to upd
 #### Test were ran on:
 - [x] MacOS Big Sur (local machine) / Python 3.8.8
 - [x] Linux Ubuntu 20.04 (pipeline machine) / Python 3.8.5
-- [ ] Windows 10
+- [ ] Windows 10 - not tested (I down have windows to test on)
 
 
 #### program runs on:
 - [x] MacOS Big Sur (local machine) / Python 3.8.8
 - [x] Linux Ubuntu 20.04 (pipeline machine) / Python 3.8.5
-- [ ] Windows 10
+- [ ] Windows 10 - not tested (I down have windows to test on)
 
 
 ## API used
