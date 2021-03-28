@@ -62,6 +62,8 @@ The comments can lie, since code can be updated, but developer can forget to upd
 
 
 ## API used
-This project utilizes [Spoonacular API](https://spoonacular.com/food-api/docs) to get recipes from ingredient list. To get the recipes from the list of ingredients following API is used: [Get recipes from ingredients API](https://spoonacular.com/food-api/docs#Search-Recipes-by-Ingredients)
+This project utilizes [Spoonacular API](https://spoonacular.com/food-api/docs) to get recipes from ingredient list. Following API are used:
+- [Get recipes from ingredients API](https://spoonacular.com/food-api/docs#Search-Recipes-by-Ingredients)
+- [Get recipe price breakdown API](https://spoonacular.com/food-api/docs#Get-Recipe-Price-Breakdown-by-ID)
 
 :checkered_flag:
