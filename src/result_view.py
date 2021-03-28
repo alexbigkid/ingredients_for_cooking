@@ -11,11 +11,11 @@ class ResultView():
         self.recipe_liked_list = []
 
 
-    def show_recipe_list(self, recipe):
+    def show_recipe_list(self):
         pass
 
 
-    def show_final_result(self, recipe):
+    def show_final_result(self):
         pass
 
 
