@@ -54,7 +54,7 @@ class Recipes():
     def __send_request(self, request_string):
         response = requests.get(request_string)
         # self.__print_json_list(response.json())
-        print(response.text)
+        # print(response.text)
         return response
 
 
