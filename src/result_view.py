@@ -77,7 +77,7 @@ class ResultView():
         print(sign_to_print * 80)
 
 
-    def __print_ingredients_line(self, title_name, ingredient_list) -> None:
+    def __print_ingredients_line(self, title_name, ingredient_list):
         list_length = len(ingredient_list)
         if list_length > 0:
             ingredients_str = ', '.join([ingredient[self.RECIPE_INGREDIENT_NAME_KEY] for ingredient in ingredient_list])
@@ -90,11 +90,10 @@ class ResultView():
         return input(self.RECIPE_PROMPT_FOR_USER_LINE3)
 
 
-    def __did_user_like_the_recipe(self, users_answer: str) -> bool:
+    def __did_user_like_the_recipe(self, users_answer):
         yes_string = users_answer.lower()
         return yes_string == 'yes' or yes_string == 'y'
 
     def __print_users_answer_for_confirmation(self, did_user_like_it):
         print('You answered with: ' + (Fore.GREEN + f"Yes" if did_user_like_it else Fore.RED + f"No"))
         print(f"{Style.RESET_ALL}")
-
