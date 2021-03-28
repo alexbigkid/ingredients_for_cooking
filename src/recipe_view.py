@@ -12,7 +12,7 @@ from colorama import Fore, Style
 from recipes import Recipes
 
 
-class ResultView():
+class RecipeView():
     INVALID_NUMBER_OF_RECIPES_PASSED_IN = 'EXCEPTION: invalid number of recipes passed in'
     TITLE_FOR_NUMBER_OF_RECIPES_FOUND = 'Number of recipes found matching provided ingredients'
     TITLE_FOR_RECIPE_NUMBER = 'Recipe number'

@@ -9,7 +9,7 @@ from colorama import Fore, Style
 # Local application imports
 from ingredients import Ingredients
 from recipes import Recipes
-from result_view import ResultView
+from recipe_view import RecipeView
 
 
 def get_ingredients():
@@ -24,7 +24,7 @@ def get_recipes(ingredients):
 
 
 def show_results(recipes):
-    result = ResultView(recipes)
+    result = RecipeView(recipes)
     result.show_recipe_list()
     result.show_final_result()
 
