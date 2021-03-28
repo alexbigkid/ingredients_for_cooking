@@ -34,7 +34,8 @@ def main():
     try:
         # ingredient_list = get_ingredients()
         # ingredient_list = ['apple', 'venigar', 'oil']
-        ingredient_list = ['apple', 'sugar', 'guanabana']
+        # ingredient_list = ['granny smith apples', 'sugar', 'venigar']
+        ingredient_list = ['garlic', 'ginger', 'granny smith apple']
         recipe_list = get_recipes(ingredient_list)
         show_results(recipe_list)
     except Exception as exception:
