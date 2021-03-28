@@ -89,8 +89,6 @@ class TestRecipes(unittest.TestCase):
             mock_get.assert_called_with(self.REQUEST_URL)
             self.assertEqual(actual_response, self.VALID_JSON_DATA)
 
-    # todo: write test for ingredients which contain white spaces, the get request string should not contain white spaces
-
 
 if __name__ == '__main__':
     unittest.main()
