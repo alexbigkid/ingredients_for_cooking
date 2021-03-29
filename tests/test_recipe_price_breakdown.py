@@ -97,7 +97,7 @@ class TestRecipePriceBreakdown(unittest.TestCase):
 
             actual_price_list = self.__recipe_price_breakdown.get_price_breakdown()
             mock_get.assert_called_with(self.REQUEST_URL)
-            self.assertEqual(actual_price_list, [self.VALID_JSON_DATA])
+            self.assertEqual(actual_price_list, [expected_price])
 
 
 if __name__ == '__main__':
