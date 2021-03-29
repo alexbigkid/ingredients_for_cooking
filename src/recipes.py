@@ -23,6 +23,10 @@ class Recipes():
     INVALID_RESPONSE_EXCEPTION_MESSAGE = 'EXCEPTION: Invalid response received.'
     NO_RECIPES_FOUND_PLEASE_TRY_AGAIN_EXCEPTION_MESSAGE = 'No Recipes were found for yourt ingredients. Please try again'
 
+
+    # -------------------------------------------------------------------------
+    # Public methods
+    # -------------------------------------------------------------------------
     def get_recipes(self, ingredient_list):
         # print('ingredients: ' + ', '.join([ingredient for ingredient in ingredient_list]))
         request_string = self.__create_request(ingredient_list)
@@ -31,6 +35,9 @@ class Recipes():
             return response.json()
 
 
+    # -------------------------------------------------------------------------
+    # Private methods
+    # -------------------------------------------------------------------------
     def __create_request(self, ingredient_list):
         api_key_value       = self.__get_api_key()
         ingredients         = ',+'.join([ingredient.replace(' ','%20') for ingredient in ingredient_list])

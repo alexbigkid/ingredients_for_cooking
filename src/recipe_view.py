@@ -33,6 +33,9 @@ class RecipeView():
         self.__liked_recipe_list = []
 
 
+    # -------------------------------------------------------------------------
+    # Public methods
+    # -------------------------------------------------------------------------
     def show_recipe_list(self):
         self.__print_number_of_recipes()
         for i, recipe in enumerate(self.__recipe_list):
@@ -50,6 +53,9 @@ class RecipeView():
         return self.__liked_recipe_list
 
 
+    # -------------------------------------------------------------------------
+    # Private methods
+    # -------------------------------------------------------------------------
     def __print_number_of_recipes(self):
         self.__print_title_line(self.TITLE_FOR_NUMBER_OF_RECIPES_FOUND, str(len(self.__recipe_list)))
         self.__print_separation_line('=')
@@ -91,5 +97,5 @@ class RecipeView():
         return yes_string == 'yes' or yes_string == 'y'
 
     def __print_users_answer_for_confirmation(self, did_user_like_it):
-        print('You answered with: ' + (Fore.GREEN + f"Yes" if did_user_like_it else Fore.RED + f"No"))
+        print('You answered with: ' + (Fore.GREEN + f"Ohh yeeh! 😋" if did_user_like_it else Fore.RED + f"Absolutelly not"))
         print(f"{Style.RESET_ALL}")

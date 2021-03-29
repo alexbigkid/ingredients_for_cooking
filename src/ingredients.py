@@ -5,6 +5,9 @@ class Ingredients():
     INVALID_INPUT_EXCEPTION_MESSAGE = 'EXCEPTION: Ivalid input. Please use only letters and white spaces.'
 
 
+    # -------------------------------------------------------------------------
+    # Public methods
+    # -------------------------------------------------------------------------
     def ask_for_ingredients(self):
         print(self.USER_PROMPT_FOR_INGREDIENTS)
 
@@ -19,6 +22,9 @@ class Ingredients():
             raise Exception(self.INVALID_INPUT_EXCEPTION_MESSAGE)
 
 
+    # -------------------------------------------------------------------------
+    # Private methods
+    # -------------------------------------------------------------------------
     def __sanitize_input(self, ingredient_list):
         ingredients = [ingredient.strip(' ') for ingredient in ingredient_list]
         return list(filter(None, ingredients))
