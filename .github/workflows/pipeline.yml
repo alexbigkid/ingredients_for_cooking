@@ -26,6 +26,9 @@ jobs:
             #   run: ./.github/scripts/AgentInfo.sh
             # - name: Install Tools
             #   run: ./InstallTools.sh
+            - name: add path for coverage tool (windows-only)
+              if: contains(matrix.os, 'windows')
+              run: set C:\Users\runneradmin\AppData\Roaming\Python\Python37\Scripts;%PATH%
             - name: Run unit tests
               run: |
                   make install_dev
