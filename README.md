@@ -74,14 +74,14 @@ There are minimal code comments, I was following the Agile
 guide lines from Uncle Bob. Code, function and variable naming should be descriptive.
 The comments can lie, since code can be updated, but developer can forget to update comments.
 
-#### Test were ran on:
+#### Test ran on:
 - [x] MacOS Big Sur (local machine and pipeline) / Python 3.8.8
 - [x] Linux Ubuntu 20.04 (pipeline machine) / Python 3.8.5
 - [x] Windows 10 (pipeline) / Python 3.7
 - [x] Raspberry Pi Zero W (via ssh) / Python 3.7.3
 
 
-#### program runs on:
+#### program tested running on:
 - [x] MacOS Big Sur (local machine) / Python 3.8.8
 - [ ] Linux Ubuntu 20.04  / Python 3.8.5
 - [ ] Windows 10 (pipeline) / Python 3.7
