@@ -24,7 +24,7 @@ and add following line into the ***.env*** file:<br>
 | :----- | :------------------------------------------------- |
 | make   | tool to execute compile instructions from Makefile |
 | pip    | python package installer                           |
-| python | python interpreter (I used for this project 3.8.8) |
+| python | python interpreter (3.8.8 was used)                |
 
 - The project should work on MacOS and Linux and any other unix like system
 - I haven't tried Windows, since I don't own a windows machine
