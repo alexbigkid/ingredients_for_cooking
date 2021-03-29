@@ -6,6 +6,7 @@
 from colorama import Fore, Style
 
 # Local application imports
+from yes_no_generator import YesNoGenerator
 
 
 class RecipeView():
@@ -97,5 +98,9 @@ class RecipeView():
         return yes_string == 'yes' or yes_string == 'y'
 
     def __print_users_answer_for_confirmation(self, did_user_like_it):
-        print('You answered with: ' + (Fore.GREEN + f"Ohh yeeh! 😋" if did_user_like_it else Fore.RED + f"Absolutelly not"))
+        yes_or_no = YesNoGenerator()
+        if did_user_like_it:
+            print('You answered with: ' + Fore.GREEN + f"{yes_or_no.generate_random_yes()}")
+        else:
+            print('You answered with: ' + Fore.RED + f"{yes_or_no.generate_random_no()}")
         print(f"{Style.RESET_ALL}")
