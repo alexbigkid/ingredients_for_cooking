@@ -42,7 +42,7 @@ class ShoppingList():
         # and used somewhere else
         if not len(liked_recipe_list) > 0:
             raise Exception(self.INVALID_NUMBER_OF_RECIPES_PASSED_IN)
-        if not len(price_info_list) >0:
+        if not len(price_info_list) > 0:
             raise Exception(self.INVALID_NUMBER_OF_RECIPES_PASSED_IN)
         self.__liked_recipe_list = liked_recipe_list
         self.__price_list = price_info_list
@@ -133,14 +133,7 @@ class ShoppingList():
 
 
     def __print_recipe_total_costs(self):
-        header_list = [
-            self.FINAL_RESULT_TABLE_HEADER_RECIPE_NAME,
-            self.FINAL_RESULT_TABLE_HEADER_MISSING_INGREDIETS,
-            self.FINAL_RESULT_TABLE_HEADER_ALL_INGREDIETS
-        ]
-        alignment_list = ['l', 'r', 'r']
-        pretty_table = self.__create_pretty_table_recipe_header(header_list, alignment_list)
-
+        self.__generate_pretty_table_for_total_cost()
         i = 0
         total_missing_ingredients_cost = 0.0
         total_all_ingredients_cost = 0.0
@@ -161,3 +154,13 @@ class ShoppingList():
         pretty_table.add_row([self.FINAL_RESULT_SUM, str(total_missing_ingredients_cost), str(total_all_ingredients_cost)])
         print('\n\n')
         print(pretty_table.get_string(title=self.FINAL_RESULT_TABLE_HEADER))
+
+
+    def __generate_pretty_table_for_total_cost(self):
+        header_list = [
+            self.FINAL_RESULT_TABLE_HEADER_RECIPE_NAME,
+            self.FINAL_RESULT_TABLE_HEADER_MISSING_INGREDIETS,
+            self.FINAL_RESULT_TABLE_HEADER_ALL_INGREDIETS
+        ]
+        alignment_list = ['l', 'r', 'r']
+        return self.__create_pretty_table_recipe_header(header_list, alignment_list)
