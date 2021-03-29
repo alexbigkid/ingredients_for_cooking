@@ -11,7 +11,7 @@ from ingredients import Ingredients
 from recipes import Recipes
 from recipe_view import RecipeView
 from shopping_list import ShoppingList
-
+from recipe_price_breakdown import RecipePriceBreakdown
 
 def get_ingredients():
     ingredients = Ingredients()
@@ -30,9 +30,13 @@ def get_liked_recipes(recipes):
     return recipe_selection.get_liked_recipe_list()
 
 
-def show_shopping_list(liked_recipe_list):
-    shopping_list = ShoppingList(liked_recipe_list)
-    shopping_list.get_price_breakdown()
+def get_price_info(liked_recipe_list):
+    recipe_price = RecipePriceBreakdown(liked_recipe_list)
+    return recipe_price.get_price_breakdown()
+
+
+def show_shopping_list(liked_recipe_list, price_info_list):
+    shopping_list = ShoppingList(liked_recipe_list, price_info_list)
     shopping_list.print_price_per_recipe()
     shopping_list.print_final_result()
 
@@ -46,7 +50,8 @@ def main():
         ingredient_list = ['garlic', 'ginger', 'granny smith apple']
         recipe_list = get_recipes(ingredient_list)
         liked_recipe_list = get_liked_recipes(recipe_list)
-        show_shopping_list(liked_recipe_list)
+        price_info_list = get_price_info(liked_recipe_list)
+        show_shopping_list(liked_recipe_list, price_info_list)
     except Exception as exception:
         print(Fore.RED + f"ERROR: executing getting recipes with your favorite ingredients")
         print(f"{exception}{Style.RESET_ALL}")

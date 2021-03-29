@@ -7,4 +7,5 @@ from env_loader import EnvLoader
 from ingredients import Ingredients
 from recipes import Recipes
 from recipe_view import RecipeView
+from recipe_price_breakdown import RecipePriceBreakdown
 from shopping_list import ShoppingList
