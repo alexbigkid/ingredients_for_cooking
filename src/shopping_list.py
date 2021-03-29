@@ -31,6 +31,7 @@ class ShoppingList():
     PRETTY_TABLE_PRICE = 'Price ($)'
     ESTIMATED_COST_FOR_MISSING_INGREDIENTS_TEXT = 'Estimated cost for missing ingredients'
     ESTIMATED_COST_FOR_ALL_INGREDIENTS_TEXT = 'Estimated cost for all ingredients'
+    ESTIMATED_COST_NOT_AVAILABLE_TEXT = 'Price info for this recipe is not available'
 
 
     def __init__(self, liked_recipe_list):
@@ -66,12 +67,10 @@ class ShoppingList():
         i = 0
         for liked_recipe in self.__liked_recipe_list:
             if liked_recipe[self.RECIPE_ID_KEY] == self.__price_list[i][self.RECIPE_ID_KEY]:
-                # record found
                 self.__print_info_for_all_missing_ingredients_in_recipe(liked_recipe, self.__price_list[i])
                 i += 1
             else:
-                # record not found, display price is missing and move to the next
-                pass
+                self.__print_price_info_not_avaibale()
 
 
     def print_final_result(self):
@@ -110,12 +109,7 @@ class ShoppingList():
         missed_ingredient_list = recipe[self.MISSING_INGREDIENTS_KEY]
         ingredient_price_list = price_breakdown[self.PRICE_LIST_INGREDIENT_KEY]
         total_missed_ingredients_price = 0.0
-        pretty_table = PrettyTable()
-        pretty_table.set_style(MSWORD_FRIENDLY)
-        pretty_table.field_names = [self.PRETTY_TABLE_INGREDIENT, self.PRETTY_TABLE_AISLE, self.PRETTY_TABLE_PRICE]
-        pretty_table.align[self.PRETTY_TABLE_INGREDIENT] = 'l'
-        pretty_table.align[self.PRETTY_TABLE_AISLE] = "l"
-        pretty_table.align[self.PRETTY_TABLE_PRICE] = 'r'
+        pretty_table = self.__create_pretty_table_recipe_header()
         for missed_ingredient in missed_ingredient_list:
             for ingredient_price in ingredient_price_list:
                 if missed_ingredient[self.INGREDIENT_NAME_KEY] == ingredient_price[self.INGREDIENT_NAME_KEY]:
@@ -128,6 +122,22 @@ class ShoppingList():
         pretty_table.add_row([self.ESTIMATED_COST_FOR_MISSING_INGREDIENTS_TEXT, '', str(round(total_missed_ingredients_price,2))])
         pretty_table.add_row([self.ESTIMATED_COST_FOR_ALL_INGREDIENTS_TEXT, '', str(price_breakdown[self.PRICE_LIST_TOTAL_COST_KEY])])
         print(pretty_table.get_string(title=recipe[self.RECIPE_TITTLE_KEY]))
+
+
+    def __print_price_info_not_avaibale(self, recipe):
+        pretty_table = self.__create_pretty_table_recipe_header()
+        pretty_table.add_row([self.ESTIMATED_COST_NOT_AVAILABLE_TEXT, '', ''])
+        print(pretty_table.get_string(title=recipe[self.RECIPE_TITTLE_KEY]))
+
+
+    def __create_pretty_table_recipe_header(self):
+        pretty_table = PrettyTable()
+        pretty_table.set_style(MSWORD_FRIENDLY)
+        pretty_table.field_names = [self.PRETTY_TABLE_INGREDIENT, self.PRETTY_TABLE_AISLE, self.PRETTY_TABLE_PRICE]
+        pretty_table.align[self.PRETTY_TABLE_INGREDIENT] = 'l'
+        pretty_table.align[self.PRETTY_TABLE_AISLE] = "l"
+        pretty_table.align[self.PRETTY_TABLE_PRICE] = 'r'
+        return pretty_table
 
 
     def __print_recipe_total_costs(self):
