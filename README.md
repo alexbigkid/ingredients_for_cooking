@@ -1,4 +1,4 @@
-# :octocat: Ingredients for cooking :octocat:
+# :octocat: Ingredients for cooking using python version 3.* :octocat:
 Creates a shopping list with your favorite ingredients for recipes you liked.
 
 ## APY KEY note
@@ -31,6 +31,10 @@ and add following line into the ***.env*** file:<br>
 - All required packages to run the app are in requirements.txt
 - All require packages to run test are in requirements_dev.txt
 
+
+*** In case the system is setup that python is linked to python version 2.* ***
+*** and python3 is linked to version 3.*, please use the 2nd set of rules postfixed with 3 ***
+*** on the command line execute "make help" to see all Makefile rules defined ***
 
 
 ## Instructions for users (if make tool is installed)
