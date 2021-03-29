@@ -7,16 +7,16 @@ import sys
 from colorama import Fore, Style
 
 # Local application imports
-from ingredients import Ingredients
+from ingredients_input import IngredientsInput
 from search_recipes_by_ingredients import SearchRecipesByIngredients
 from recipe_view import RecipeView
 from shopping_list import ShoppingList
 from recipe_price_breakdown import RecipePriceBreakdown
 
 def get_ingredients():
-    ingredients = Ingredients()
-    ingredients.ask_for_ingredients()
-    return ingredients.read_input()
+    ingredients_input = IngredientsInput()
+    ingredients_input.ask_for_ingredients()
+    return ingredients_input.read_input()
 
 
 def get_recipes(ingredients):
@@ -44,10 +44,8 @@ def show_shopping_list(liked_recipe_list, price_info_list):
 def main():
     exit_code = 0
     try:
-        # ingredient_list = get_ingredients()
-        # ingredient_list = ['apple', 'venigar', 'oil']
-        # ingredient_list = ['granny smith apples', 'sugar', 'venigar']
-        ingredient_list = ['garlic', 'ginger', 'granny smith apple']
+        ingredient_list = get_ingredients()
+        # ingredient_list = ['garlic', 'ginger', 'granny smith apple']
         recipe_list = get_recipes(ingredient_list)
         liked_recipe_list = get_liked_recipes(recipe_list)
         price_info_list = get_price_info(liked_recipe_list)

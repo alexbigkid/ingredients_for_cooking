@@ -1,6 +1,6 @@
 """Prompts user to enter ingredients, sanitizes user's input and validates it"""
 
-class Ingredients():
+class IngredientsInput():
     USER_PROMPT_FOR_INGREDIENTS = 'Please enter your favorite ingredients separated by comma:'
     INVALID_INPUT_EXCEPTION_MESSAGE = 'EXCEPTION: Ivalid input. Please use only letters and white spaces.'
 

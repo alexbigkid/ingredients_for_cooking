@@ -9,12 +9,12 @@ from unittest.mock import patch
 from parameterized import parameterized
 
 # Local application imports
-from context import Ingredients
+from context import IngredientsInput
 
-class TestIngredients(unittest.TestCase):
+class TestIngredientsInput(unittest.TestCase):
 
     def setUp(self):
-        self.ingredients = Ingredients()
+        self.__ingredients_input = IngredientsInput()
 
 
     # -------------------------------------------------------------------------
@@ -25,9 +25,9 @@ class TestIngredients(unittest.TestCase):
             ask_for_ingredients prompts user to enter ingredients
         """
         with patch('sys.stdout', new=StringIO()) as fakeOutput:
-            self.ingredients.ask_for_ingredients()
+            self.__ingredients_input.ask_for_ingredients()
             actual_stdout = fakeOutput.getvalue().rstrip('\n')
-            self.assertEqual(actual_stdout, self.ingredients.USER_PROMPT_FOR_INGREDIENTS)
+            self.assertEqual(actual_stdout, self.__ingredients_input.USER_PROMPT_FOR_INGREDIENTS)
 
 
     # -------------------------------------------------------------------------
@@ -45,7 +45,7 @@ class TestIngredients(unittest.TestCase):
             read_input is able to read input with valid values
         """
         with patch('builtins.input', return_value=input):
-            actual_input = self.ingredients.read_input()
+            actual_input = self.__ingredients_input.read_input()
             self.assertEqual(actual_input, expected)
 
 
@@ -63,7 +63,7 @@ class TestIngredients(unittest.TestCase):
             read_input can sanitize users input
         """
         with patch('builtins.input', return_value=input):
-            actual_input = self.ingredients.read_input()
+            actual_input = self.__ingredients_input.read_input()
             self.assertEqual(actual_input, expected)
 
 
@@ -83,8 +83,8 @@ class TestIngredients(unittest.TestCase):
         """
         with patch('builtins.input', return_value=input):
             with self.assertRaises(Exception) as exception_message:
-                self.ingredients.read_input()
-            self.assertEqual(str(exception_message.exception), self.ingredients.INVALID_INPUT_EXCEPTION_MESSAGE)
+                self.__ingredients_input.read_input()
+            self.assertEqual(str(exception_message.exception), self.__ingredients_input.INVALID_INPUT_EXCEPTION_MESSAGE)
 
 
 if __name__ == '__main__':
