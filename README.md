@@ -91,4 +91,8 @@ This project utilizes [Spoonacular API](https://spoonacular.com/food-api/docs) t
 - [Get recipes from ingredients API](https://spoonacular.com/food-api/docs#Search-Recipes-by-Ingredients)
 - [Get recipe price breakdown API](https://spoonacular.com/food-api/docs#Get-Recipe-Price-Breakdown-by-ID)
 
+
+## Screenshot of functioning app
+![The screenshot](docs/running_app.jpg?raw=true "running app")
+
 :checkered_flag:
