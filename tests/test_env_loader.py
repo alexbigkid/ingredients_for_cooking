@@ -13,7 +13,7 @@ from context import EnvLoader
 class TestEnvLoader(unittest.TestCase):
 
     def setUp(self):
-        self.env_loader = EnvLoader()
+        self.__env_loader = EnvLoader()
 
     # -------------------------------------------------------------------------
     # Tests for get_environment_variable_value_
@@ -23,7 +23,7 @@ class TestEnvLoader(unittest.TestCase):
         """
             get_environment_variable_value returns a value from the set environment variable
         """
-        actual_value = self.env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR')
+        actual_value = self.__env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR')
         self.assertEqual(actual_value, '[fake_api_key]')
 
 
@@ -33,7 +33,7 @@ class TestEnvLoader(unittest.TestCase):
             get_environment_variable_value returns empty string
             given environment variable is set to empty string
         """
-        actual_value = self.env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR')
+        actual_value = self.__env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR')
         self.assertEqual(actual_value, '')
 
 
@@ -42,7 +42,7 @@ class TestEnvLoader(unittest.TestCase):
             get_environment_variable_value returns empty string
             given environment variable is not set
         """
-        actual_value = self.env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR')
+        actual_value = self.__env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR')
         self.assertEqual(actual_value, '')
 
 
@@ -53,13 +53,13 @@ class TestEnvLoader(unittest.TestCase):
         """
             set_environment_varaibales_from_file sets environment variable read from file
         """
-        env_var_value = self.env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR')
+        env_var_value = self.__env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR')
         self.assertEqual(env_var_value, '')
         with patch("builtins.open", mock_open(read_data='ABK_TEST_ENV_VAR=[fake_api_key]')) as mock_file:
 
-            self.env_loader.set_environment_varaibales_from_file('does_not_matter')
+            self.__env_loader.set_environment_varaibales_from_file('does_not_matter')
 
-            env_var_value = self.env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR')
+            env_var_value = self.__env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR')
             self.assertEqual(env_var_value, '[fake_api_key]')
             mock_file.assert_called_with('does_not_matter', 'r')
 
@@ -69,18 +69,18 @@ class TestEnvLoader(unittest.TestCase):
             set_environment_varaibales_from_file sets several environment variables
             after reading from file
         """
-        env_var_value = self.env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR1')
+        env_var_value = self.__env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR1')
         self.assertEqual(env_var_value, '')
-        env_var_value = self.env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR2')
+        env_var_value = self.__env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR2')
         self.assertEqual(env_var_value, '')
         data_to_read = 'ABK_TEST_ENV_VAR1=[que_chimba]\nABK_TEST_ENV_VAR2=[no_dar_papaya]'
         with patch("builtins.open", mock_open(read_data=data_to_read)) as mock_file:
 
-            self.env_loader.set_environment_varaibales_from_file('does_not_matter')
+            self.__env_loader.set_environment_varaibales_from_file('does_not_matter')
 
-            env_var_value = self.env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR1')
+            env_var_value = self.__env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR1')
             self.assertEqual(env_var_value, '[que_chimba]')
-            env_var_value = self.env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR2')
+            env_var_value = self.__env_loader.get_environment_variable_value('ABK_TEST_ENV_VAR2')
             self.assertEqual(env_var_value, '[no_dar_papaya]')
             mock_file.assert_called_with('does_not_matter', 'r')
 

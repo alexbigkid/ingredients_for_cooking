@@ -19,7 +19,7 @@ class TestSearchRecipesByIngredients(unittest.TestCase):
     JSON_DATA_NOT_CHANGED = [{'data': 'did not change'}]
 
     def setUp(self):
-        self.search_recipes = SearchRecipesByIngredients()
+        self.__search_recipes = SearchRecipesByIngredients()
 
 
     # -------------------------------------------------------------------------
@@ -37,9 +37,9 @@ class TestSearchRecipesByIngredients(unittest.TestCase):
             mock_get.return_value.json.return_value = self.INVALID_JSON_DATA
             with self.assertRaises(Exception) as exception_message:
 
-                actual_response = self.search_recipes.get_recipes(self.INGREDIENTS)
+                actual_response = self.__search_recipes.get_recipes(self.INGREDIENTS)
 
-            self.assertEqual(str(exception_message.exception), self.search_recipes.INVALID_RESPONSE_EXCEPTION_MESSAGE)
+            self.assertEqual(str(exception_message.exception), self.__search_recipes.INVALID_RESPONSE_EXCEPTION_MESSAGE)
             mock_get.assert_called_with(self.REQUEST_URL)
             self.assertEqual(actual_response, self.JSON_DATA_NOT_CHANGED)
 
@@ -56,9 +56,9 @@ class TestSearchRecipesByIngredients(unittest.TestCase):
             mock_get.return_value.json.return_value = self.INVALID_JSON_DATA
             with self.assertRaises(Exception) as exception_message:
 
-                actual_response = self.search_recipes.get_recipes(self.INGREDIENTS)
+                actual_response = self.__search_recipes.get_recipes(self.INGREDIENTS)
 
-            self.assertEqual(str(exception_message.exception), self.search_recipes.NO_RECIPES_FOUND_PLEASE_TRY_AGAIN_EXCEPTION_MESSAGE)
+            self.assertEqual(str(exception_message.exception), self.__search_recipes.NO_RECIPES_FOUND_PLEASE_TRY_AGAIN_EXCEPTION_MESSAGE)
             mock_get.assert_called_with(self.REQUEST_URL)
             self.assertEqual(actual_response, self.JSON_DATA_NOT_CHANGED)
 
@@ -75,9 +75,9 @@ class TestSearchRecipesByIngredients(unittest.TestCase):
             mock_get.return_value.json.return_value = self.VALID_JSON_DATA
             with self.assertRaises(Exception) as exception_message:
 
-                actual_response = self.search_recipes.get_recipes(self.INGREDIENTS)
+                actual_response = self.__search_recipes.get_recipes(self.INGREDIENTS)
 
-            self.assertEqual(str(exception_message.exception), self.search_recipes.INVALID_RESPONSE_EXCEPTION_MESSAGE)
+            self.assertEqual(str(exception_message.exception), self.__search_recipes.INVALID_RESPONSE_EXCEPTION_MESSAGE)
             mock_get.assert_called_with(self.REQUEST_URL)
             self.assertEqual(actual_response, self.JSON_DATA_NOT_CHANGED)
 
@@ -93,7 +93,7 @@ class TestSearchRecipesByIngredients(unittest.TestCase):
             mock_get.return_value.ok = True
             mock_get.return_value.json.return_value = self.VALID_JSON_DATA
 
-            actual_response = self.search_recipes.get_recipes(self.INGREDIENTS)
+            actual_response = self.__search_recipes.get_recipes(self.INGREDIENTS)
 
             mock_get.assert_called_with(self.REQUEST_URL)
             self.assertEqual(actual_response, self.VALID_JSON_DATA)
