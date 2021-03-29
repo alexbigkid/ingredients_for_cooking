@@ -8,7 +8,8 @@ import requests
 from api_key_loader import ApiKeyLoader
 
 
-class Recipes():
+# class Recipes():
+class SearchRecipesByIngredients():
     SPOONACULAR_FIND_BY_INGREDIENTS_API_URL = 'https://api.spoonacular.com/recipes/findByIngredients'
     INGREDIENTS_KEY = 'ingredients'     # A comma-separated list of ingredients that the recipes should contain.
     NUMBER_KEY = 'number'               # The maximum number of recipes to return (between 1 and 100). Defaults to 10.

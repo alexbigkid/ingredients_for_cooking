@@ -1,4 +1,4 @@
-"""Unit tests for recipes.py"""
+"""Unit tests for search_recipes_by_ingredients.py"""
 
 # Standard library imports
 import os
@@ -8,10 +8,10 @@ from unittest.mock import patch, mock_open
 # Third party imports
 
 # Local application imports
-from context import Recipes
+from context import SearchRecipesByIngredients
 
 
-class TestRecipes(unittest.TestCase):
+class TestSearchRecipesByIngredients(unittest.TestCase):
     INGREDIENTS = ['granadilla', 'tomate de arbol', 'lulo', 'maracuya', 'guanabana']
     REQUEST_URL = 'https://api.spoonacular.com/recipes/findByIngredients?ingredients=granadilla,+tomate%20de%20arbol,+lulo,+maracuya,+guanabana&number=8&limitLicense=true&ranking=1&ignorePantry=true&apiKey=[valid_api_key]'
     VALID_JSON_DATA = [{'key1': 'value1'}, {'key2': 'value2'}]
@@ -19,7 +19,7 @@ class TestRecipes(unittest.TestCase):
     JSON_DATA_NOT_CHANGED = [{'data': 'did not change'}]
 
     def setUp(self):
-        self.recipes = Recipes()
+        self.search_recipes = SearchRecipesByIngredients()
 
 
     # -------------------------------------------------------------------------
@@ -27,50 +27,50 @@ class TestRecipes(unittest.TestCase):
     # -------------------------------------------------------------------------
     @patch.dict(os.environ, {'SPOONACULAR_API_KEY': '[valid_api_key]'})
     def test_get_recipes_should_throw_given_response_not_ok_and_json_data_invalid(self):
-        with patch('src.recipes.requests.get') as mock_get:
+        with patch('src.search_recipes_by_ingredients.requests.get') as mock_get:
             actual_response = self.JSON_DATA_NOT_CHANGED
             mock_get.return_value.ok = False
             mock_get.return_value.json.return_value = self.INVALID_JSON_DATA
             with self.assertRaises(Exception) as exception_message:
-                actual_response = self.recipes.get_recipes(self.INGREDIENTS)
-            self.assertEqual(str(exception_message.exception), self.recipes.INVALID_RESPONSE_EXCEPTION_MESSAGE)
+                actual_response = self.search_recipes.get_recipes(self.INGREDIENTS)
+            self.assertEqual(str(exception_message.exception), self.search_recipes.INVALID_RESPONSE_EXCEPTION_MESSAGE)
             mock_get.assert_called_with(self.REQUEST_URL)
             self.assertEqual(actual_response, self.JSON_DATA_NOT_CHANGED)
 
 
     @patch.dict(os.environ, {'SPOONACULAR_API_KEY': '[valid_api_key]'})
     def test_get_recipes_should_throw_given_response_ok_but_json_data_invalid(self):
-        with patch('src.recipes.requests.get') as mock_get:
+        with patch('src.search_recipes_by_ingredients.requests.get') as mock_get:
             actual_response = self.JSON_DATA_NOT_CHANGED
             mock_get.return_value.ok = True
             mock_get.return_value.json.return_value = self.INVALID_JSON_DATA
             with self.assertRaises(Exception) as exception_message:
-                actual_response = self.recipes.get_recipes(self.INGREDIENTS)
-            self.assertEqual(str(exception_message.exception), self.recipes.NO_RECIPES_FOUND_PLEASE_TRY_AGAIN_EXCEPTION_MESSAGE)
+                actual_response = self.search_recipes.get_recipes(self.INGREDIENTS)
+            self.assertEqual(str(exception_message.exception), self.search_recipes.NO_RECIPES_FOUND_PLEASE_TRY_AGAIN_EXCEPTION_MESSAGE)
             mock_get.assert_called_with(self.REQUEST_URL)
             self.assertEqual(actual_response, self.JSON_DATA_NOT_CHANGED)
 
 
     @patch.dict(os.environ, {'SPOONACULAR_API_KEY': '[valid_api_key]'})
     def test_get_recipes_should_throw_given_valid_json_but_response_not_ok(self):
-        with patch('src.recipes.requests.get') as mock_get:
+        with patch('src.search_recipes_by_ingredients.requests.get') as mock_get:
             actual_response = self.JSON_DATA_NOT_CHANGED
             mock_get.return_value.ok = False
             mock_get.return_value.json.return_value = self.VALID_JSON_DATA
             with self.assertRaises(Exception) as exception_message:
-                actual_response = self.recipes.get_recipes(self.INGREDIENTS)
-            self.assertEqual(str(exception_message.exception), self.recipes.INVALID_RESPONSE_EXCEPTION_MESSAGE)
+                actual_response = self.search_recipes.get_recipes(self.INGREDIENTS)
+            self.assertEqual(str(exception_message.exception), self.search_recipes.INVALID_RESPONSE_EXCEPTION_MESSAGE)
             mock_get.assert_called_with(self.REQUEST_URL)
             self.assertEqual(actual_response, self.JSON_DATA_NOT_CHANGED)
 
 
     @patch.dict(os.environ, {'SPOONACULAR_API_KEY': '[valid_api_key]'})
     def test_get_recipes_should_return_valid_data_given_response_ok_and_json_data_valid(self):
-        with patch('src.recipes.requests.get') as mock_get:
+        with patch('src.search_recipes_by_ingredients.requests.get') as mock_get:
             actual_response = self.JSON_DATA_NOT_CHANGED
             mock_get.return_value.ok = True
             mock_get.return_value.json.return_value = self.VALID_JSON_DATA
-            actual_response = self.recipes.get_recipes(self.INGREDIENTS)
+            actual_response = self.search_recipes.get_recipes(self.INGREDIENTS)
             mock_get.assert_called_with(self.REQUEST_URL)
             self.assertEqual(actual_response, self.VALID_JSON_DATA)
 

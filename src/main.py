@@ -8,7 +8,7 @@ from colorama import Fore, Style
 
 # Local application imports
 from ingredients import Ingredients
-from recipes import Recipes
+from search_recipes_by_ingredients import SearchRecipesByIngredients
 from recipe_view import RecipeView
 from shopping_list import ShoppingList
 from recipe_price_breakdown import RecipePriceBreakdown
@@ -20,8 +20,8 @@ def get_ingredients():
 
 
 def get_recipes(ingredients):
-    recipes = Recipes()
-    return recipes.get_recipes(ingredients)
+    search_recipes = SearchRecipesByIngredients()
+    return search_recipes.get_recipes(ingredients)
 
 
 def get_liked_recipes(recipes):
