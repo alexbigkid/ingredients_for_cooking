@@ -58,6 +58,7 @@ class RecipeView():
     # Private methods
     # -------------------------------------------------------------------------
     def __print_number_of_recipes(self):
+        print('\n\n')
         self.__print_title_line(self.TITLE_FOR_NUMBER_OF_RECIPES_FOUND, str(len(self.__recipe_list)))
         self.__print_separation_line('=')
 
