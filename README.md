@@ -7,7 +7,10 @@ http service is required. Since it is sensitive information and should
 not be added to the plain view of source code, you would need to set up
 an environment variable in you terminal with following command:<br>
 ```html
+On *nix OS
    export SPOONACULAR_API_KEY=spoonacular_api_key_here
+On Windows
+    set SPOONACULAR_API_KEY=spoonacular_api_key_here
 ```
 
 Or alternatively you can create file ***.env*** in root directory of this project
@@ -34,11 +37,19 @@ and add following line into the ***.env*** file:<br>
 
 
 
-## Instructions for users
+## Instructions for users (if make tool is installed)
 | command      | description                         |
 | :----------- | :---------------------------------- |
 | make install | installs needed python dependencies |
 | make my_dish | starts the program                  |
+
+
+## Instructions for users (make tool is not available)
+| command                                | description                         |
+| :------------------------------------- | :---------------------------------- |
+| pip install --user -r requirements.txt | installs needed python dependencies |
+| python ./src/main.py                   | starts the program                  |
+
 
 
 ## Instructions for developers
