@@ -8,7 +8,7 @@ not be added to the plain view of source code, you would need to set up
 an environment variable in you terminal with following command:<br>
 ```html
 On *nix OS
-   export SPOONACULAR_API_KEY=spoonacular_api_key_here
+    export SPOONACULAR_API_KEY=spoonacular_api_key_here
 On Windows
     set SPOONACULAR_API_KEY=spoonacular_api_key_here
 ```
@@ -75,15 +75,17 @@ guide lines from Uncle Bob. Code, function and variable naming should be descrip
 The comments can lie, since code can be updated, but developer can forget to update comments.
 
 #### Test were ran on:
-- [x] MacOS Big Sur (local machine) / Python 3.8.8
+- [x] MacOS Big Sur (local machine and pipeline) / Python 3.8.8
 - [x] Linux Ubuntu 20.04 (pipeline machine) / Python 3.8.5
-- [ ] Windows 10 - not tested (I down have windows to test on)
+- [x] Windows 10 (pipeline) / Python 3.7
+- [x] Raspberry Pi Zero W (via ssh) / Python 3.7.3
 
 
 #### program runs on:
 - [x] MacOS Big Sur (local machine) / Python 3.8.8
-- [x] Linux Ubuntu 20.04 (pipeline) / Python 3.8.5
-- [x] Windows 10 (pipeline) / Python 3.7
+- [ ] Linux Ubuntu 20.04  / Python 3.8.5
+- [ ] Windows 10 (pipeline) / Python 3.7
+- [x] Raspberry Pi Zero W (via ssh) / Python 3.7.3
 
 
 ## API used
