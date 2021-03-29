@@ -82,8 +82,8 @@ The comments can lie, since code can be updated, but developer can forget to upd
 
 #### program runs on:
 - [x] MacOS Big Sur (local machine) / Python 3.8.8
-- [x] Linux Ubuntu 20.04 (pipeline machine) / Python 3.8.5
-- [ ] Windows 10 - not tested (I down have windows to test on)
+- [x] Linux Ubuntu 20.04 (pipeline) / Python 3.8.5
+- [x] Windows 10 (pipeline) / Python 3.7
 
 
 ## API used
