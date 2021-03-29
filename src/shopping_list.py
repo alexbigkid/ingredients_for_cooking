@@ -133,7 +133,7 @@ class ShoppingList():
 
 
     def __print_recipe_total_costs(self):
-        self.__generate_pretty_table_for_total_cost()
+        pretty_table = self.__generate_pretty_table_for_total_cost()
         i = 0
         total_missing_ingredients_cost = 0.0
         total_all_ingredients_cost = 0.0
