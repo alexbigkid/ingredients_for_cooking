@@ -39,11 +39,11 @@ jobs:
               run: |
                 export PATH=/Users/runner/Library/Python/3.9/bin:$PATH
                 make install_dev3
-                make coverage
+                make test
 
             - name: Run unit tests (windows-only)
               if: contains(matrix.os, 'windows')
               run: |
                 set PATH="%PATH%;C:\Users\runneradmin\AppData\Roaming\Python\Python37\Scripts"
                 make install_dev
-                make coverage
+                make test
