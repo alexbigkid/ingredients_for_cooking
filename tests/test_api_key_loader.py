@@ -30,7 +30,9 @@ class TestApiKeyLoader(unittest.TestCase):
         with patch("builtins.open", mock_open(read_data='ABK_TEST_ENV_VAR=[invalid_api_key]')) as mock_file:
             actual_environment_var_value = ''
             with self.assertRaises(Exception) as exception_message:
+
                 actual_environment_var_value = self.__api_key_loader.get_api_key()
+
             self.assertEqual(str(exception_message.exception), self.__api_key_loader.API_KEY_NOT_FOUND_EXCEPTION_MESSAGE)
             mock_file.assert_called_with(self.__api_key_loader.ENVIRONMENT_FILE_NAME, 'r')
             self.assertEqual(os.environ[self.__api_key_loader.SPOONACULAR_API_KEY], '')
@@ -43,7 +45,9 @@ class TestApiKeyLoader(unittest.TestCase):
             get_api_key returns SPOONACULAR_API_KEY value from the environment variable if set
         """
         actual_environment_var_value = ''
+
         actual_environment_var_value = self.__api_key_loader.get_api_key()
+
         self.assertEqual(os.environ[self.__api_key_loader.SPOONACULAR_API_KEY], '[valid_api_key]')
         self.assertEqual(actual_environment_var_value, '[valid_api_key]')
 
@@ -55,7 +59,9 @@ class TestApiKeyLoader(unittest.TestCase):
         """
         with patch("builtins.open", mock_open(read_data='SPOONACULAR_API_KEY=[valid_api_key]')) as mock_file:
             actual_environment_var_value = ''
+
             actual_environment_var_value = self.__api_key_loader.get_api_key()
+
             mock_file.assert_called_with(self.__api_key_loader.ENVIRONMENT_FILE_NAME, 'r')
             self.assertEqual(os.environ[self.__api_key_loader.SPOONACULAR_API_KEY], '[valid_api_key]')
             self.assertEqual(actual_environment_var_value, '[valid_api_key]')

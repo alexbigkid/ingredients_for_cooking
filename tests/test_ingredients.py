@@ -21,11 +21,13 @@ class TestIngredients(unittest.TestCase):
     # Tests for ask_for_ingredients
     # -------------------------------------------------------------------------
     def test_ask_for_ingredients_prompts_user_to_enter_ingredients(self):
+        """
+            ask_for_ingredients prompts user to enter ingredients
+        """
         with patch('sys.stdout', new=StringIO()) as fakeOutput:
             self.ingredients.ask_for_ingredients()
             actual_stdout = fakeOutput.getvalue().rstrip('\n')
-            self.assertEqual(
-                actual_stdout, self.ingredients.USER_PROMPT_FOR_INGREDIENTS)
+            self.assertEqual(actual_stdout, self.ingredients.USER_PROMPT_FOR_INGREDIENTS)
 
 
     # -------------------------------------------------------------------------
@@ -39,6 +41,9 @@ class TestIngredients(unittest.TestCase):
             ['green onion', 'red potatos', 'sweet potato', 'dark chocolate']],
     ])
     def test_read_input_with_valid_values(self, input, expected):
+        """
+            read_input is able to read input with valid values
+        """
         with patch('builtins.input', return_value=input):
             actual_input = self.ingredients.read_input()
             self.assertEqual(actual_input, expected)
@@ -54,6 +59,9 @@ class TestIngredients(unittest.TestCase):
         [',, basil , , potatos,,', ['basil', 'potatos']],
     ])
     def test_read_input_should_sanitize_values(self, input, expected):
+        """
+            read_input can sanitize users input
+        """
         with patch('builtins.input', return_value=input):
             actual_input = self.ingredients.read_input()
             self.assertEqual(actual_input, expected)
@@ -68,7 +76,11 @@ class TestIngredients(unittest.TestCase):
         ['😀'],
         ['😎, 🥸'],
     ])
-    def test_read_input_should_throw_exception_given_not_valid_input(self, input):
+    def test_read_input_should_throw_exception_given_invalid_input(self, input):
+        """
+            read_input throws exception
+            given user enters invalid characters
+        """
         with patch('builtins.input', return_value=input):
             with self.assertRaises(Exception) as exception_message:
                 self.ingredients.read_input()
