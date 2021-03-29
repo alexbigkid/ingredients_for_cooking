@@ -19,11 +19,7 @@ and add following line into the ***.env*** file:<br>
    SPOONACULAR_API_KEY=spoonacular_api_key_here
 ```
 
-``` diff
-+ You probably alread have your own API key, you could use. Otherwise I happy to share if you ask.
-```
-
-## Prerequisites tools
+## Prerequisites
 | tool   | description                                        |
 | :----- | :------------------------------------------------- |
 | make   | tool to execute compile instructions from Makefile |
