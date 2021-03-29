@@ -13,7 +13,7 @@ class IngredientsInput():
 
 
     def read_input(self):
-        ingredients = input()
+        ingredients = input('> ')
         ingredients = ingredients.split(',')
         ingredients = self.__sanitize_input(ingredients)
         if self.__is_input_valid(ingredients):
