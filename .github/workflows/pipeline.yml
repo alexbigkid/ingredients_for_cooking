@@ -15,8 +15,8 @@ jobs:
         runs-on: ${{ matrix.os }}
         strategy:
             matrix:
-                os: [ubuntu-latest]
-                # os: [ ubuntu-latest, macOS-latest ]
+                # os: [ubuntu-latest]
+                os: [ ubuntu-latest, macOS-latest ]
 
         steps:
             - name: checking out the git repo
