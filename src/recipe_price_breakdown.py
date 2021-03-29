@@ -3,7 +3,9 @@
 # Standard library imports
 
 # Third party imports
+from colorama import Fore, Style
 import requests
+import json
 
 # Local application imports
 from api_key_loader import ApiKeyLoader
