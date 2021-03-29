@@ -39,7 +39,7 @@ jobs:
               run: |
                 export PATH=/Users/runner/Library/Python/3.9/bin:$PATH
                 make install_dev3
-                make test
+                make test3
 
             - name: Run unit tests (windows-only)
               if: contains(matrix.os, 'windows')
