@@ -76,7 +76,7 @@ class ShoppingList():
                 self.__print_info_for_all_missing_ingredients_in_recipe_and_save_total_costs(liked_recipe, self.__price_list[i])
                 i += 1
             else:
-                self.__print_price_info_not_avaibale()
+                self.__print_price_info_not_avaibale(liked_recipe)
 
 
     # todo: this method needs refactoring since it is doing more then 1 thing
