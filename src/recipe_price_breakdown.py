@@ -34,6 +34,7 @@ class RecipePriceBreakdown():
     # Public methods
     # -------------------------------------------------------------------------
     def get_price_breakdown(self):
+        # TODO: This can be improved by sending multiple requests at the same time using multi cores / multi threading
         for liked_recipe in self.__liked_recipe_list:
             request_string = self.__create_request(liked_recipe[self.RECIPE_ID_KEY])
             response = self.__send_request(request_string)
