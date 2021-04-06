@@ -131,3 +131,4 @@ dmypy.json
 # ignore some documents
 */Assignment.pdf
 docs/images
+spikes/*
